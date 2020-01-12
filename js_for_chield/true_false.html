@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>true, false, И, ИЛИ, больше, меньше, равно, равенство</title>
+</head>
+<body>
+<script>
+    /*Условие - если 12 лет или больше, то может, если 12 нет, но есть взрослый, то может, в остальных случаях нет*/
+    var age = 11; //возраст посетителя
+    var accompanied = true; //со взрослым
+    var access = age >= 12 || accompanied === true; //проверять пока только через ===, через == не надо
+    console.log(access);
+
+</script>
+
+</body>
+</html>
