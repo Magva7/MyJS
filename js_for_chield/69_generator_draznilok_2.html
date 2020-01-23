@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор случайныйх дразнилок</title>
+</head>
+<body>
+    <script>
+        var bodyParts = ["рука", "нога", "задница", "шея", "голова"]; /*Массив с частями тела*/
+        var adjective = [ "кривая", "вонючая","немытая","толстая", "синяя"]; /*Массив с прилагательными*/
+        var animals = ["крысы", "выдры", "выхухоли", "обезьяны"]; /*Массив с животными*/
+        var animalsParts = ["лапа", "вымя", "шерсть", "хвост"];
+
+        var randomBodyParts = bodyParts[Math.floor(Math.random()*bodyParts.length)]; /*Выбираем случайную часть тела*/
+        var randomAdjective = adjective[Math.floor(Math.random()*adjective.length)]; /*Выбираем случайное прилагательное*/
+        var randomnAnimals = animals[Math.floor(Math.random()*animals.length)]; /*Выбираем случайное животное*/
+        var randomAnimalsPart = animalsParts[Math.floor(Math.random()*animals.length)]; /*Выбираем случайной  части тела животного*/
+
+        var draznilka = "У тебя " + randomBodyParts + " еще более " + randomAdjective + " чем " + randomAnimalsPart +
+            " у " + randomnAnimals + "!";
+        draznilka;
+
+        var draznilka2 = ["У тебя", randomBodyParts, "как у", randomAdjective, randomnAnimals + "!"].join(" "); /*Тоже
+        самое, только здесь мы сделали через массив - каждое слово это отдельный элемент массива, соединяем мы их
+        через join с разделителем в виде пробела, только в конце перед восклицательным знаком пробел не нужен*/
+
+        var numbers = [1,2,3];
+        var stroka = numbers[2] + " больше, чем " + numbers[1] + " больше, чем " + numbers[0];
+    </script>
+</body>
+</html>
