@@ -33,10 +33,28 @@
        .night{
            background-color: lightblue;
        }
+
+        .red{
+            background-color: red;
+        }
     </style>
+
+    <script>
+        /*Очистка ячейки при клике*/
+        window.addEventListener("load", function(){
+            document.getElementById("mTab").addEventListener("click", function(e){
+                e.target.innerHTML  = "";
+            });
+        });
+
+        el.classList.add("red");
+
+        let list = document.querySelector(<td>);
+        list.classList += ' red';
+    </script>
 </head>
 <body>
-<table>
+<table id="mTab">
     <tr>
         <td class="name"></td>
         <td class="day_week">Пн</td>
