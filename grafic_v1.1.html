@@ -39,78 +39,82 @@
         }
     </style>
 
-    <script>
-        /*Очистка ячейки при клике*/
-        window.addEventListener("load", function(){
-            document.getElementById("mTab").addEventListener("click", function(e){
-                e.target.innerHTML  = "";
-            });
-        });
+<!--    <script>-->
+<!--        /*Очистка ячейки при клике*/-->
+<!--        window.addEventListener("load", function(){-->
+<!--            document.getElementById("mTab").addEventListener("click", function(e){-->
+<!--                e.target.innerHTML  = "";-->
+<!--            });-->
+<!--        });-->
 
-        el.classList.add("red");
+<!--        el.classList.add("red");-->
 
-        let list = document.querySelector(<td>);
-        list.classList += ' red';
-    </script>
+<!--        let list = document.querySelector(<td>);-->
+<!--        list.classList += ' red';-->
+<!--    </script>-->
 </head>
 <body>
-<table id="mTab">
-    <tr>
-        <td class="name"></td>
-        <td class="day_week">Пн</td>
-        <td class="day_week">Вт</td>
-        <td class="day_week">Ср</td>
-        <td class="day_week">Чт</td>
-        <td class="day_week">Пт</td>
-        <td class="day_week">Сб</td>
-        <td class="day_week">Вс</td>
-    </tr>
-    <tr>
-        <td class="name"></td>
-        <td>20 янв</td>
-        <td>21 янв</td>
-        <td>22 янв</td>
-        <td>23 янв</td>
-        <td>24 янв</td>
-        <td>25 янв</td>
-        <td>26 янв</td>
-    </tr>
-    <tr>
-        <td class="name">Лавр</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="sutki">Сутки</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td class="name">Юран</td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td class="name">Борода</td>
-        <td></td>
-        <td class="day">День</td>
-        <td></td>
-        <td class="day">День</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-    </tr>
-</table>
-<br>
-<br>
 
-<!--Вторая таблица-->
+<!--Первая таблица - 20 янв - 26 янв-->
+<!--<table id="mTab">-->
+<!--    <tr>-->
+<!--        <td class="name"></td>-->
+<!--        <td class="day_week">Пн</td>-->
+<!--        <td class="day_week">Вт</td>-->
+<!--        <td class="day_week">Ср</td>-->
+<!--        <td class="day_week">Чт</td>-->
+<!--        <td class="day_week">Пт</td>-->
+<!--        <td class="day_week">Сб</td>-->
+<!--        <td class="day_week">Вс</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td class="name"></td>-->
+<!--        <td>20 янв</td>-->
+<!--        <td>21 янв</td>-->
+<!--        <td>22 янв</td>-->
+<!--        <td>23 янв</td>-->
+<!--        <td>24 янв</td>-->
+<!--        <td>25 янв</td>-->
+<!--        <td>26 янв</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td class="name">Лавр</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td class="sutki">Сутки</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td class="name">Юран</td>-->
+<!--        <td class="day">День</td>-->
+<!--        <td class="night">Ночь</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td class="day">День</td>-->
+<!--        <td class="night">Ночь</td>-->
+<!--        <td></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td class="name">Борода</td>-->
+<!--        <td></td>-->
+<!--        <td class="day">День</td>-->
+<!--        <td></td>-->
+<!--        <td class="day">День</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td class="day">День</td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--<br>-->
+<!--<br>-->
+
+<!--Вторая таблица - 27 янв - 2 фев-->
 <table>
+
+<!--    Строка дней недели-->
     <tr>
         <td class="name"></td>
         <td class="day_week">Пн</td>
@@ -121,6 +125,8 @@
         <td class="day_week">Сб</td>
         <td class="day_week">Вс</td>
     </tr>
+
+<!--    Строка дат-->
     <tr>
         <td class="name"></td>
         <td>27 янв</td>
@@ -131,6 +137,8 @@
         <td>01 фев</td>
         <td>02 фев</td>
     </tr>
+
+<!--    Строка Лавра-->
     <tr>
         <td class="name">Лавр</td>
         <td class="sutki">Сутки</td>
@@ -141,6 +149,8 @@
         <td></td>
         <td></td>
     </tr>
+
+<!--    Моя строка-->
     <tr>
         <td class="name">Юран</td>
         <td></td>
@@ -151,10 +161,12 @@
         <td class="day">День</td>
         <td class="night">Ночь</td>
     </tr>
+
+<!--    Строка Бороды-->
     <tr>
         <td class="name">Борода</td>
         <td></td>
-        <td></td>
+        <td class="day">День</td>
         <td></td>
         <td></td>
         <td></td>
@@ -165,7 +177,7 @@
 <br>
 <br>
 
-<!--Третья таблица-->
+<!--Третья таблица - 3 февр - 9 фев-->
 <table>
     <tr>
         <td class="name"></td>
@@ -206,6 +218,62 @@
         <td></td>
         <td></td>
         <td class="day">День</td>
+    </tr>
+    <tr>
+        <td class="name">Борода</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<br>
+
+<!--Четвертая таблица - 11 февр - 16 фев-->
+<table>
+    <tr>
+        <td class="name"></td>
+        <td class="day_week">Пн</td>
+        <td class="day_week">Вт</td>
+        <td class="day_week">Ср</td>
+        <td class="day_week">Чт</td>
+        <td class="day_week">Пт</td>
+        <td class="day_week">Сб</td>
+        <td class="day_week">Вс</td>
+    </tr>
+    <tr>
+        <td class="name"></td>
+        <td>11 фев</td>
+        <td>12 фев</td>
+        <td>13 фев</td>
+        <td>14 фев</td>
+        <td>15 фев</td>
+        <td>16 фев</td>
+        <td>17 фев</td>
+    </tr>
+    <tr>
+        <td class="name">Лавр</td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+    </tr>
+    <tr>
+        <td class="name">Юран</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <<td class="night">Ночь</td>
+        <td></td>
+        <td></td>
     </tr>
     <tr>
         <td class="name">Борода</td>
