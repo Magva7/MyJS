@@ -68,7 +68,7 @@
                         table += "<td class=\"name\"></td>"}
                     else {
 
-                    table += "<td>Ячейка " + myDate.getDate() +".0" + (myDate.getMonth()+1) +"</td>";}
+                    table += "<td>" + myDate.getDate() +".0" + (myDate.getMonth()+1) +"</td>";}
                     myDate.setDate(myDate.getDate() + 1);
                 } /* вложенный цикл завершение*/
 
@@ -83,15 +83,15 @@
                         table += "<td class=\"name\">Юран " + "</td>";
                     }  else if (count%4===1){ /*каждый четвертый день - дневная*/
                         count++;
-                        table += "<td class=\"day\">День " + count + "</td>";
+                        table += "<td class=\"day\">День "+ "</td>";
 
                     }else if ((count+3)%4===1){ /*Тоже самое- каждый 4-ый- ночная*/
                         count++;
-                        table += "<td class=\"night\">Ночь " + count + "</td>";
+                        table += "<td class=\"night\">Ночь " + "</td>";
 
                     } else {
                         count++;
-                        table += "<td>Ячейка " + count +"</td>";
+                        table += "<td></td>";
                     }
                 } /* вложенный цикл завершение*/
 
