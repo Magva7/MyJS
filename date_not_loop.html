@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Дата через JS без цикла</title>
+    <script>
+
+
+        var firstDay = new Date(2020, 1, 28); //Задаем дату - первый понедельник первой недели
+
+        // задаем опции - что и в каком виде будет отображаться
+        var options = {
+            month: 'short',
+            day: 'numeric',
+            weekday: 'short',
+        };
+        var plusDay = 24*60*60*1000; //задаем количество миллисекунд в одном дне, чтобы потом это прибавлять
+
+        var twoDate = new Date(firstDay.valueOf()+plusDay); //вторая дата
+        var threeDay = new Date(firstDay.valueOf()+plusDay*2)
+        var fourDate = new Date(firstDay.valueOf()+plusDay*3); //четвертая дата
+
+        document.write(firstDay.toLocaleString("ru", options)); //вывод первого дня
+        document.write("<br>");
+        document.write(twoDate.toLocaleString("ru", options) ); //вывод второго дня
+        document.write("<br>");
+        document.write(threeDay.toLocaleString("ru", options) ); //вывод третьего дня
+        document.write("<br>");
+        document.write(fourDate.toLocaleString("ru", options) ); //вывод четверого дня
+    </script>
+</head>
+<body>
+
+</body>
+</html>
