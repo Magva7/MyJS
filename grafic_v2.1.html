@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>График 2.1</title>
-    <style>
-        *	{
-            margin: 0;
-            padding: 0;}
 
+    <style>
         table	{
             border-collapse: collapse;
         }
 
         td	{
-            border: 1px solid black;
+            border: 2px solid black;
             text-align: center;
             width: 160px;
             /*font-size: 24px;*/
@@ -107,85 +104,71 @@
     }
 
     table += "</tr>"; /*Закрываем строку*/
+
+    <!--Моя строка-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Юран" +"</td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--Строка Лавра-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Вадима-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Вадим" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Миши-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Миша" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Нади-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Надя" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
     table += "</table>"; /*Закрываем таблицу*/
 
     document.write(table); /*Выводим таблицу*/
 </script>
-
-<!--Рисуем руками первую таблицу с самим графиком - 17-23 февраля-->
-<table>
-    <!--Моя строка-->
-    <tr>
-        <td class="noborder">Юран</td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-    </tr>
-
-    <!--Строка Лавра-->
-    <tr>
-        <td class="noborder">Лавр</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="sutki">Сутки</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-
-    <!--    Строка Вадима-->
-    <tr>
-        <td class="noborder">Вадим</td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-    </tr>
-
-    <!--    Строка Миши-->
-    <tr>
-        <td class="noborder">Миша</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-    </tr>
-
-    <!--    Строка Нади-->
-    <tr>
-        <td class="noborder">Надя</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-        <td class="day">День</td>
-        <td class="night">Ночь</td>
-        <td></td>
-        <td></td>
-    </tr>
-
-    <!--    Строка Бороды-->
-    <!--    <tr>-->
-    <!--        <td class="name">Борода</td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--        <td></td>-->
-    <!--    </tr>-->
-</table>
 <br>
 <hr>
 <!--Вторая таблица-->
