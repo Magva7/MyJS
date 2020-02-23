@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Дата через JS без цикла</title>
+    <style>
+        *	{
+            margin: 0;
+            padding: 0;}
+
+        table	{
+            border-collapse: collapse;
+            margin: auto;}
+
+        td	{
+            border: 2px solid #090;
+            padding: 5px;
+            text-align: center;}
+
+        .strong	{
+            background: #fcc;}
+    </style>
+
+</head>
+<body>
+<script>
+
+
+    var setDay = new Date(2020, 1, 17); //Задаем дату - первый понедельник первой недели
+
+    // задаем опции - что и в каком виде будет отображаться дата
+    var options1 = {
+        month: 'short',
+        day: 'numeric',
+        // weekday: 'short',
+    };
+
+    // задаем опции - что и в каком виде будет отображаться день недели
+    var options2 = {
+        weekday: 'short',
+    };
+    // var plusDay = 24*60*60*1000; //задаем количество миллисекунд в одном дне, чтобы потом это прибавлять
+
+    var table = "<table>";
+
+    table +="<tr>"
+    for (var i =0 ; i < 7; i++){
+        table += "<td>" + (setDay.toLocaleString("ru", options1)) + "</td>"; /*каждую итерацию в строку добавляется
+            новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+            переменной option*/
+        setDay = new Date(setDay.valueOf()+24*60*60*1000); /*Каждую итерацию к переменной firstDay добавляется
+             еще 1 день в миллисекундах*/
+        // document.write(firstDay.toLocaleString("ru", options));
+    }
+
+    table += "</tr>";
+
+
+
+    table += "</table>";
+    document.write(table);
+
+    // var twoDate = new Date(firstDay.valueOf()+plusDay); //вторая дата
+    // // var threeDay = new Date(firstDay.valueOf()+plusDay*2);
+    // // var fourDate = new Date(firstDay.valueOf()+plusDay*3); //четвертая дата
+    // //
+    // document.write(firstDay.toLocaleString("ru", options)); //вывод первого дня
+    // document.write("<br>");
+    // document.write(twoDate.toLocaleString("ru", options) ); //вывод второго дня
+    // document.write("<br>");
+    // document.write(threeDay.toLocaleString("ru", options) ); //вывод третьего дня
+    // document.write("<br>");
+    // document.write(fourDate.toLocaleString("ru", options) ); //вывод четверого дня
+</script>
+<table>
+    <tr>
+        <td>Раз</td>
+    </tr>
+</table>
+<script>
+
+
+    var setDay = new Date(2020, 1, 17); //Задаем дату - первый понедельник первой недели
+
+    // задаем опции - что и в каком виде будет отображаться дата
+    var options1 = {
+        month: 'short',
+        day: 'numeric',
+        // weekday: 'short',
+    };
+
+    // задаем опции - что и в каком виде будет отображаться день недели
+    var options2 = {
+        weekday: 'short',
+    };
+    // var plusDay = 24*60*60*1000; //задаем количество миллисекунд в одном дне, чтобы потом это прибавлять
+
+    var table = "<table>";
+
+    table +="<tr>"
+    for (var i =0 ; i < 7; i++){
+        table += "<td>" + (setDay.toLocaleString("ru", options1)) + "</td>"; /*каждую итерацию в строку добавляется
+            новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+            переменной option*/
+        setDay = new Date(setDay.valueOf()+24*60*60*1000); /*Каждую итерацию к переменной firstDay добавляется
+             еще 1 день в миллисекундах*/
+        // document.write(firstDay.toLocaleString("ru", options));
+    }
+
+    table += "</tr>";
+
+
+
+    table += "</table>";
+    document.write(table);
+
+    // var twoDate = new Date(firstDay.valueOf()+plusDay); //вторая дата
+    // // var threeDay = new Date(firstDay.valueOf()+plusDay*2);
+    // // var fourDate = new Date(firstDay.valueOf()+plusDay*3); //четвертая дата
+    // //
+    // document.write(firstDay.toLocaleString("ru", options)); //вывод первого дня
+    // document.write("<br>");
+    // document.write(twoDate.toLocaleString("ru", options) ); //вывод второго дня
+    // document.write("<br>");
+    // document.write(threeDay.toLocaleString("ru", options) ); //вывод третьего дня
+    // document.write("<br>");
+    // document.write(fourDate.toLocaleString("ru", options) ); //вывод четверого дня
+</script>
+</body>
+</html>
