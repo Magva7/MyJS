@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>График 2.2.2</title>
+
+    <style>
+        table	{
+            border-collapse: collapse;
+        }
+
+        td	{
+            border: 2px solid black;
+            text-align: center;
+            width: 160px;
+            /*font-size: 24px;*/
+        }
+
+        .current	{
+            /*background: #fcc;*/
+            /*border: 2px solid black;*/
+            font-weight: bold;} /*жирный шрифт*/
+
+        .noborder {
+            border: 0;
+        }
+
+        .sutki{
+            background-color: salmon;
+        }
+
+        .day{
+            background-color: yellow;
+        }
+
+        .night{
+            background-color: lightblue;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--Первая таблица-->
+<script>
+    var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
+    var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
+    // var fullCurrentDate = new Date(2020, 1, 24); /*Задаем дату вручную для теста*/
+    var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
+    var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
+    var setDate = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
+
+    /*Задаем дату первого дня первой недели - т.к. в англ. отчет идет с воскресенья, т.е. воскресенье это 0 день недели,
+    * а понедельник - 1-ый, то делаем условие, если сегодня понедельник, значит дата первого понедельника будет равна
+    * текущей дате, минус 6, а если любой другой день недели, то дата первого понедельника будет равна текущей дате,
+    * минус 1 и умноженное на номер дня в неделе, т.е. отсчитываем назад столько суток, сколько прошло с понедельника*/
+    if(currentDayWeek==0){
+        setDate = new Date(fullCurrentDate.valueOf()-sutki*6);
+    } else {
+        setDate = new Date(fullCurrentDate.valueOf()-sutki*(currentDayWeek-1));
+    }
+
+    var options1 = {
+        weekday: 'short',
+    }; // задаем опции - что и в каком виде будет отображаться день недели
+    var options2 = {
+        month: 'short',
+        day: 'numeric',
+        // weekday: 'short',
+    }; /* задаем опции - в каком виде будет отображаться дата*/
+
+
+    var table = "<table>"; /*Начинаем первую таблицу*/
+
+    table +="<tr>";/*Начинаем новую строку, где будут дни недели*/
+    table += "<td class=\"noborder\">" + " " + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели*/
+    for (var i =0 ; i < 7; i++){
+        if(setDate.getDate() == currentDate) { /*Проверка - равна ли дата текущей дате, если да, то создается и
+        добавляется ячейка с классом current, я ему потом задам жирный, если нет, то с классом noborder, я там границы потом уберу*/
+            table += "<td class=\"current\">" + (setDate.toLocaleString("ru", options1)) + "</td>";/*каждую итерацию в строку добавляется
+        //     новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+        //     переменной option*/
+            setDate = new Date(setDate.valueOf()+sutki);/*Каждую итерацию к переменной firstDay добавляется
+        //      еще 1 день в миллисекундах*/
+        } else {
+            table += "<td class=\"noborder\">" + (setDate.toLocaleString("ru", options1)) + "</td>";
+            setDate = new Date(setDate.valueOf()+sutki);
+        }
+
+    }
+    table += "</tr>"; /*Закрываем строку*/
+
+
+    setDate = new Date(setDate.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    table +="<tr>" /*Начинаем новую строку, где будут даты*/
+    table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них даты*/
+    for (var i =0 ; i < 7; i++){
+        if(setDate.getDate() == currentDate) { /*Проверка - равна ли дата текущей дате, если да, то создается и
+        добавляется ячейка с классом current, я ему потом задам жирный, если нет, то с классом noborder, я там границы потом уберу*/
+            table += "<td class=\"current\">" + (setDate.toLocaleString("ru", options2)) + "</td>";/*каждую итерацию в строку добавляется
+        //     новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+        //     переменной option*/
+            setDate = new Date(setDate.valueOf()+sutki);/*Каждую итерацию к переменной firstDay добавляется
+        //      еще 1 день в миллисекундах*/
+        } else {
+            table += "<td>" + (setDate.toLocaleString("ru", options2)) + "</td>";
+            setDate = new Date(setDate.valueOf()+sutki);
+        }
+
+    }
+
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--Моя строка-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Юран" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--Строка Лавра-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Вадима-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Вадим" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Николая-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Николай" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Нади-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Надя" +"</td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "</tr>"; /*Закрываем строку*/
+
+    table += "</table>"; /*Закрываем таблицу*/
+
+    document.write(table); /*Выводим таблицу*/
+</script>
+<br>
+<hr>
+<!--Вторая таблица-->
+
+<script>
+
+    var table = "<table>"; /*Начинаем таблицу*/
+
+    table +="<tr>";/*Начинаем новую строку, где будут дни недели*/
+    table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+    * текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+            table += "<td class=\"noborder\">" + (setDate.toLocaleString("ru", options1)) + "</td>";
+            setDate = new Date(setDate.valueOf()+sutki);
+    }
+    table += "</tr>"; /*Закрываем строку*/
+
+
+    setDate = new Date(setDate.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    table +="<tr>" /*Начинаем новую строку, где будут даты*/
+    table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+* текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+            table += "<td>" + (setDate.toLocaleString("ru", options2)) + "</td>";
+            setDate = new Date(setDate.valueOf()+sutki);
+    }
+
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--Моя строка-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Юран" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "</tr>";
+
+        <!--Строка Лавра-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+        <!--    Строка Вадима-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Вадим" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+    <!--    Строка Миши-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Миша" +"</td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+        <!--    Строка Нади-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Надя" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "</tr>";
+
+    <!--    Строка Николая-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Николай" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td>" + "8" +"</td>";
+    table += "<td>" + "8" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+    //     <!--    Строка Бороды-->
+    // table += "<tr>";
+    // table += "<td class=\"noborder\">" + "Борода" +"</td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "</tr>";
+
+
+
+    table += "</table>"; /*Закрываем таблицу*/
+
+    document.write(table); /*Выводим таблицу*/
+</script>
+<br>
+<hr>
+<!--Третья таблица-->
+
+<script>
+
+    var table = "<table>"; /*Начинаем таблицу*/
+
+    table +="<tr>";/*Начинаем новую строку, где будут дни недели*/
+    table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+    * текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+        table += "<td class=\"noborder\">" + (setDate.toLocaleString("ru", options1)) + "</td>";
+        setDate = new Date(setDate.valueOf()+sutki);
+    }
+    table += "</tr>"; /*Закрываем строку*/
+
+
+    setDate = new Date(setDate.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    table +="<tr>" /*Начинаем новую строку, где будут даты*/
+    table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+* текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+        table += "<td>" + (setDate.toLocaleString("ru", options2)) + "</td>";
+        setDate = new Date(setDate.valueOf()+sutki);
+    }
+
+    table += "</tr>"; /*Закрываем строку*/
+
+    <!--Моя строка-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Юран" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+    <!--Строка Лавра-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"sutki\">" + "Сутки" +"</td>";
+    table += "</tr>";
+
+    <!--    Строка Вадима-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Вадим" +"</td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+    <!--    Строка Миши-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Миша" +"</td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>"
+    table += "</tr>";
+
+    <!--    Строка Николая-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Николай" +"</td>";
+    table += "<td></td>";
+    table += "<td>" + "8" +"</td>";
+    table += "<td>" + "8" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "</tr>";
+
+    <!--    Строка Нади-->
+    table += "<tr>";
+    table += "<td class=\"noborder\">" + "Надя" +"</td>";
+    table += "<td class=\"day\">" + "День" +"</td>";
+    table += "<td class=\"night\">" + "Ночь" +"</td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "<td></td>";
+    table += "</tr>";
+
+
+
+    // <!--    Строка Бороды-->
+    // table += "<tr>";
+    // table += "<td class=\"noborder\">" + "Борода" +"</td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "<td></td>";
+    // table += "</tr>";
+
+    table += "</table>"; /*Закрываем таблицу*/
+
+    document.write(table); /*Выводим таблицу*/
+</script>
+<br>
+</body>
+</html>
