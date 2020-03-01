@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>График 2.4</title>
+    <title>График 2.5</title>
 
     <style>
         table	{
@@ -38,6 +38,10 @@
             background-color: lightblue;
         }
 
+        .otpusk{
+            background-color: chartreuse;
+        }
+
     </style>
 
 </head>
@@ -65,6 +69,11 @@
     var dateDnevnaya = new Date(2020, 1, 21);/*Задаем дату дневной смены, которая была раньше, и с которой будем сравнивать*/
 
     var raznica = Math.floor((setDate-dateDnevnaya)/sutki); /*Разница между датами, округленная до целого вниз*/
+
+
+    /* Отпуска:*/
+    var vadimStart = new Date(2020, 2, 7);
+    var vadimStop = new Date(2020, 2, 7);
 
     var options1 = {
         weekday: 'short',
@@ -160,9 +169,17 @@
     table += "<tr>";
     table += "<td class=\"noborder\">" + "Вадим" +"</td>";
     /*Набиваем строку ячейками*/
+
+    setDate = new Date(setDate.valueOf()-7*sutki);
+    console.log("setDate перед Вадимом в первой таблице: "+setDate);
     for(var i=0;i<7;i++){
+        var otpusk = new Date(setDate.valueOf()+sutki*i);
+        /*Проверяем на отпуск*/
+        if(otpusk>=vadimStart&&otpusk<=vadimStop) {
+            table += "<td class=\"otpusk\">" + "Отп." +"</td>";
+        }
         /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i-1)%4==0){
+        else if((raznica+i-1)%4==0){
             table += "<td class=\"day\">" + "День" +"</td>";
         }
         /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
@@ -230,8 +247,8 @@
     table += "</tr>"; /*Закрываем строку*/
 
 
-    setDate = new Date(setDate.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
-    увеличили на 7, поэтому теперь уменьшаем*/
+    // setDate = new Date(setDate.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    // увеличили на 7, поэтому теперь уменьшаем*/
 
     table +="<tr>" /*Начинаем новую строку, где будут даты*/
     table += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
@@ -283,9 +300,18 @@
     table += "<tr>";
     table += "<td class=\"noborder\">" + "Вадим" +"</td>";
     /*Набиваем строку ячейками*/
+
+    setDate = new Date(setDate.valueOf()-7*sutki);
+    console.log("setDate перед Вадимом во второй таблице: "+setDate);
     for(var i=7;i<14;i++){
+        var otpusk = new Date(setDate.valueOf()+sutki*(i-8));
+        console.log("otpusk: "+otpusk)
+        /*Проверяем на отпуск*/
+        if(otpusk>=vadimStart&&otpusk<=vadimStop) {
+            table += "<td class=\"otpusk\">" + "Отп." +"</td>";
+        }
         /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i-1)%4==0){
+        else if((raznica+i-1)%4==0){
             table += "<td class=\"day\">" + "День" +"</td>";
         }
         /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
@@ -405,8 +431,6 @@
     table += "</tr>"; /*Закрываем строку*/
 
     <!--Моя строка-->
-    console.log(setDate);
-    console.log(raznica);
     table += "<tr>";
     table += "<td class=\"noborder\">" + "Юран" +"</td>";
     /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
