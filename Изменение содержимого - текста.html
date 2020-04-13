@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение содержимого элемента - текста</title>
+</head>
+
+<body>
+    <button class="knopka" type="button">Изменить текст</button>
+    <p>
+        Исходный текст
+    </p>
+</body>
+
+<script>
+    let knopka = document.querySelector('button');/*сохраняем кнопку в переменную*/
+    let message = document.querySelector('p');
+
+    knopka.onclick = function() { /*Указываем, что делать при нажатии на кнопку, в данном случае будет переключать класс*/
+        message.textContent = 'Я новое текстовое содержимое элемента!';
+    };
+
+</script>
+</html>
