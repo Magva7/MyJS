@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Переключение классов</title>
+    <style>
+        .green{
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<button class="knopka" type="button">Изменить цвет</button>
+<p class="paragraph green">
+    Исходный текст
+</p>
+
+<script>
+    // console.log(document.querySelector('.paragraph')); /*Выводит в консоль весь класс, а не только его содержимое*/
+    let paragraph = document.querySelector('.paragraph');/*сохраняем параграф в переменную*/
+    let knopka = document.querySelector('button');/*сохраняем кнопку в переменную*/
+
+    // knopka.onclick = function() { /*Указываем, что делать при нажатии на кнопку, в данном случае будет выводиться текст
+    // в консоль*/
+    //     console.log('Клик!');
+    // };
+
+    knopka.onclick = function() { /*Указываем, что делать при нажатии на кнопку, в данном случае будет переключать класс*/
+        paragraph.classList.toggle('green');
+        paragraph.classList.toggle('red');
+    };
+</script>
+</body>
+</html>
