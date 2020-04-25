@@ -50,8 +50,8 @@
 <!--Переменные-->
 <script>
     var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
-    var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
-    // var fullCurrentDate = new Date(2020, 3, 2); /*Задаем дату вручную для теста*/
+    // var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
+    var fullCurrentDate = new Date(2020, 3, 30); /*Задаем дату вручную для теста*/
     var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
     var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
     var firstMonday = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
@@ -79,6 +79,18 @@
 
 
     var raznica = Math.floor((firstMonday-dateDnevnaya)/sutki); /*Разница между датами, округленная до целого вниз*/
+
+    // Даты начала и конца недель
+    var startWeek1 = new Date(2020, 3, 20);
+    var finishWeek1 = new Date(2020, 3, 27);
+
+    var startWeek2 = new Date(2020, 3, 27);
+    var finishWeek2 = new Date(2020, 4, 4);
+
+    console.log(fullCurrentDate);
+    console.log(startWeek2);
+    console.log(finishWeek2);
+
 
     </script>
 
@@ -173,27 +185,6 @@
     }
     table1 += "</tr>"; /*Закрываем строку*/
 
-    <!--    Строка Димы-->
-    table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "Дима" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=0;i<7;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            table1 += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i)%4==0){
-            table1 += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            table1 += "<td></td>";
-        }
-    }
-    table1 += "</tr>"; /*Закрываем строку*/
-
-
     <!--    Строка Вадима-->
     table1 += "<tr>";
     table1 += "<td class=\"noborder\">" + "Вадим" +"</td>";
@@ -213,56 +204,6 @@
         }
     }
     table1 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Миши-->
-    table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=0;i<7;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            table1 += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            table1 += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            table1 += "<td></td>";
-        }
-    }
-    table1 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Ильи-->
-    table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "Илья" +"</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "<td>Б</td>";
-    table1 += "</tr>";
-    table1 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Николая-->
-    table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "Николай" +"</td>";
-    table1 += "<td class=\"day\">" + "День" +"</td>";
-    table1 += "<td class=\"night\">" + "Ночь" +"</td>";
-    table1 += "<td></td>";
-    table1 += "<td>8</td>";
-    table1 += "<td>8</td>";
-    table1 += "<td></td>";
-    table1 += "<td></td>";
-    table1 += "</tr>";
-    table1 += "</tr>"; /*Закрываем строку*/
-
-    table1 += "</table>"; /*Закрываем таблицу*/
-
-
 </script>
 
 <!--Вторая таблица-->
@@ -333,26 +274,6 @@
         }
     }
 
-    <!--    Строка Димы-->
-    table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "Дима" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=7;i<14;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            table2 += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i)%4==0){
-            table2 += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            table2 += "<td></td>";
-        }
-    }
-    table2 += "</tr>"; /*Закрываем строку*/
-
     <!--    Строка Вадима-->
     table2 += "<tr>";
     table2 += "<td class=\"noborder\">" + "Вадим" +"</td>";
@@ -372,54 +293,6 @@
         }
     }
     table2 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Миши-->
-    table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
-    for(var i=7;i<14;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            table2 += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            table2 += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            table2 += "<td></td>";
-        }
-    }
-    table2 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Ильи-->
-    table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "Илья" +"</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "<td>Б</td>";
-    table2 += "</tr>";
-    table2 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Николая-->
-    table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "Николай" +"</td>";
-    table2 += "<td>8</td>";
-    table2 += "<td>8</td>";
-    table2 += "<td>8</td>";
-    table2 += "<td>8</td>";
-    table2 += "<td></td>";
-    table2 += "<td></td>";
-    table2 += "<td></td>";
-    table2 += "</tr>";
-    table2 += "</tr>"; /*Закрываем строку*/
-
-    table2 += "</table>"; /*Закрываем таблицу*/
 
 
 </script>
@@ -496,19 +369,6 @@
         }
     }
 
-    <!--    Строка Димы-->
-    table3 += "<tr>";
-    table3 += "<td class=\"noborder\">" + "Дима" +"</td>";
-    table3 += "<td></td>";
-    table3 += "<td></td>";
-    table3 += "<td>О</td>";
-    table3 += "<td>О</td>";
-    table3 += "<td>О</td>";
-    table3 += "<td></td>";
-    table3 += "<td></td>";
-    table3 += "</tr>";
-    table3 += "</tr>"; /*Закрываем строку*/
-
     <!--    Строка Вадима-->
     table3 += "<tr>";
     table3 += "<td class=\"noborder\">" + "Вадим" +"</td>";
@@ -528,56 +388,7 @@
         }
     }
     table3 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Миши-->
-    table3 += "<tr>";
-    table3 += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
-    for(var i=14;i<21;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            table3 += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            table3 += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            table3 += "<td></td>";
-        }
-    }
-    table3 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Ильи-->
-    table3 += "<tr>";
-    table3 += "<td class=\"noborder\">" + "Илья" +"</td>";
-    table3 += "<td>Б</td>";
-    table3 += "<td>Б</td>";
-    table3 += "<td class=\"day\">" + "День" +"</td>";
-    table3 += "<td class=\"night\">" + "Ночь" +"</td>";
-    table3 += "<td></td>";
-    table3 += "<td></td>";
-    table3 += "<td class=\"day\">" + "День" +"</td>";
-    table3 += "</tr>";
-    table3 += "</tr>"; /*Закрываем строку*/
-
-    <!--    Строка Николая-->
-    table3 += "<tr>";
-    table3 += "<td class=\"noborder\">" + "Николай" +"</td>";
-    table3 += "<td></td>";
-    table3 += "<td></td>";
-    table3 += "<td>8</td>";
-    table3 += "<td>8</td>";
-    table3 += "<td>8</td>";
-    table3 += "<td></td>";
-    table3 += "<td></td>";
-    table3 += "</tr>";
-    table3 += "</tr>"; /*Закрываем строку*/
-
-    table3 += "</table>"; /*Закрываем таблицу*/
-
-
+    
 </script>
 
 <!--Четвертая таблица-->
@@ -650,19 +461,6 @@
         }
     }
 
-    <!--    Строка Димы-->
-    table4 += "<tr>";
-    table4 += "<td class=\"noborder\">" + "Дима" +"</td>";
-    table4 += "<td></td>";
-    table4 += "<td class=\"night\">" + "Ночь" +"</td>";
-    table4 += "<td></td>";
-    table4 += "<td></td>";
-    table4 += "<td class=\"day\">" + "День" +"</td>";
-    table4 += "<td class=\"night\">" + "Ночь" +"</td>";
-    table4 += "<td></td>";
-    table4 += "</tr>";
-    table4 += "</tr>"; /*Закрываем строку*/
-
     <!--    Строка Вадима-->
     table4 += "<tr>";
     table4 += "<td class=\"noborder\">" + "Вадим" +"</td>";
@@ -682,61 +480,309 @@
         }
     }
     table4 += "</tr>"; /*Закрываем строку*/
+    
+</script>
 
-    <!--    Строка Миши-->
-    table4 += "<tr>";
-    table4 += "<td class=\"noborder\">" + "Миша" +"</td>";
-    table4 += "<td class=\"day\">" + "День" +"</td>";
-    table4 += "<td>О</td>";
-    table4 += "<td>О</td>";
-    table4 += "<td>О</td>";
-    table4 += "<td>О</td>";
-    table4 += "<td>О</td>";
-    table4 += "<td>О</td>";
-    table4 += "</tr>";
-    table4 += "</tr>"; /*Закрываем строку*/
+<!--Первая статическая неделя-->
+<script>
+    var firstWeekStatic;
 
-    <!--    Строка Ильи-->
-    table4 += "<tr>";
-    table4 += "<td class=\"noborder\">" + "Илья" +"</td>";
+    // Строка Димы
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    /*Набиваем строку ячейками*/
+    for(var i=0;i<7;i++){
+        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+        if((raznica+i+1)%4==0){
+            firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+        }
+        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+        else if((raznica+i)%4==0){
+            firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+        }
+        /*Если так, значит смены нет, ячейка пустая*/
+        else {
+            firstWeekStatic += "<td></td>";
+        }
+    }
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
+
+    // Строка Миши
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
+    /*Набиваем строку ячейками*/
+    for(var i=0;i<7;i++){
+        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+        if((raznica+i)%4==0){
+            firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+        }
+        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+        else if((raznica+i-1)%4==0){
+            firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+        }
+        /*Если так, значит смены нет, ячейка пустая*/
+        else {
+            firstWeekStatic += "<td></td>";
+        }
+    }
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Ильи
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "<td>Б</td>";
+    firstWeekStatic += "</tr>";
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Николая
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "</tr>";
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    firstWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+
+<!--Вторая статическая неделя-->
+<script>
+    var twoWeekStatic;
+    // Строка Димы
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    /*Набиваем строку ячейками*/
+    for(var i=7;i<14;i++){
+        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+        if((raznica+i+1)%4==0){
+            twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+        }
+        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+        else if((raznica+i)%4==0){
+            twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+        }
+        /*Если так, значит смены нет, ячейка пустая*/
+        else {
+            twoWeekStatic += "<td></td>";
+        }
+    }
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Миши
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
+    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
+    for(var i=7;i<14;i++){
+        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+        if((raznica+i)%4==0){
+            twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+        }
+        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+        else if((raznica+i-1)%4==0){
+            twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+        }
+        /*Если так, значит смены нет, ячейка пустая*/
+        else {
+            twoWeekStatic += "<td></td>";
+        }
+    }
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Ильи
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "<td>Б</td>";
+    twoWeekStatic += "</tr>";
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Николая
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "</tr>";
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    twoWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+
+<!--Третья статическая неделя-->
+<script>
+    var threeWeekStatic;
+    // Строка Димы
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td>О</td>";
+    threeWeekStatic += "<td>О</td>";
+    threeWeekStatic += "<td>О</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "</tr>";
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Миши
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
+    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
+    for(var i=14;i<21;i++){
+        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+        if((raznica+i)%4==0){
+            threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+        }
+        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+        else if((raznica+i-1)%4==0){
+            threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+        }
+        /*Если так, значит смены нет, ячейка пустая*/
+        else {
+            threeWeekStatic += "<td></td>";
+        }
+    }
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Ильи
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    threeWeekStatic += "<td>Б</td>";
+    threeWeekStatic += "<td>Б</td>";
+    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    threeWeekStatic += "</tr>";
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Николая
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "</tr>";
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    threeWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+
+<!--Четвертая статическая неделя-->
+<script>
+    var fourWeekStatic;
+    // Строка Димы
+    fourWeekStatic += "<tr>";
+    fourWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "</tr>";
+    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    Строка Миши
+    fourWeekStatic += "<tr>";
+    fourWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
+    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "<td>О</td>";
+    fourWeekStatic += "</tr>";
+    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    // Строка Ильи
+    fourWeekStatic += "<tr>";
+    fourWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
     /*Набиваем строку ячейками*/
     for(var i=21;i<28;i++){
         /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
         if((raznica+i+1)%4==0){
-            table4 += "<td class=\"day\">" + "День" +"</td>";
+            fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
         }
         /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
         else if((raznica+i)%4==0){
-            table4 += "<td class=\"night\">" + "Ночь" +"</td>";
+            fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
         }
         /*Если так, значит смены нет, ячейка пустая*/
         else {
-            table4 += "<td></td>";
+            fourWeekStatic += "<td></td>";
         }
     }
-    table4 += "</tr>"; /*Закрываем строку*/
+    fourWeekStatic += "</tr>"; /*Закрываем строку*/
 
-    <!--    Строка Николая-->
-    table4 += "<tr>";
-    table4 += "<td class=\"noborder\">" + "Николай" +"</td>";
-    table4 += "<td></td>";
-    table4 += "<td>8</td>";
-    table4 += "<td>8</td>";
-    table4 += "<td>8</td>";
-    table4 += "<td>8</td>";
-    table4 += "<td></td>";
-    table4 += "<td></td>";
-    table4 += "</tr>";
-    table4 += "</tr>"; /*Закрываем строку*/
+    // Строка Николая
+    fourWeekStatic += "<tr>";
+    fourWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td>8</td>";
+    fourWeekStatic += "<td>8</td>";
+    fourWeekStatic += "<td>8</td>";
+    fourWeekStatic += "<td>8</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "</tr>";
+    fourWeekStatic += "</tr>"; /*Закрываем строку*/
 
-    table4 += "</table>"; /*Закрываем таблицу*/
+    fourWeekStatic += "</table>"; /*Закрываем таблицу*/
+    </script>
+
+<!--Условия - добавляем статические части графика к таблицам в зависимости от недели-->
+<script>
+    // Если текущая дата в рамках первой недели, то добавляем в первую таблицу firstWeekStatic
+    if(fullCurrentDate>startWeek1&&fullCurrentDate<finishWeek1){
+        table1 += firstWeekStatic;
+    }
+
+    // Если текущая дата в рамках второй недели, то добавляем twoWeekStatic
+    if(fullCurrentDate>startWeek2&&fullCurrentDate<finishWeek2){
+        table1 += twoWeekStatic;
+    }
 </script>
 
 <!--Выводим таблицы-->
 <script>
     document.write(table1); /*Выводим таблицу*/
+    // document.write("<br><hr>");
+
     document.write(table2); /*Выводим таблицу*/
+    document.write("<br><hr>");
+
     document.write(table3); /*Выводим таблицу*/
+    document.write("<br><hr>");
+
     document.write(table4); /*Выводим таблицу*/
 </script>
 </body>
