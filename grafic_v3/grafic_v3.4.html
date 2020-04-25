@@ -50,8 +50,8 @@
 <!--Переменные-->
 <script>
     var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
-    // var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
-    var fullCurrentDate = new Date(2020, 4, 15); /*Задаем дату вручную для теста*/
+    var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
+    // var fullCurrentDate = new Date(2020, 4, 5); /*Задаем дату вручную для теста*/
     var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
     var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
     var firstMonday = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
@@ -496,42 +496,25 @@
     // Строка Димы
     firstWeekStatic += "<tr>";
     firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=0;i<7;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i)%4==0){
-            firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            firstWeekStatic += "<td></td>";
-        }
-    }
+    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    firstWeekStatic += "<td></td>";
     firstWeekStatic += "</tr>"; /*Закрываем строку*/
-
 
     // Строка Миши
     firstWeekStatic += "<tr>";
     firstWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=0;i<7;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            firstWeekStatic += "<td></td>";
-        }
-    }
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
     firstWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Ильи
@@ -544,7 +527,6 @@
     firstWeekStatic += "<td>Б</td>";
     firstWeekStatic += "<td>Б</td>";
     firstWeekStatic += "<td>Б</td>";
-    firstWeekStatic += "</tr>";
     firstWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Николая
@@ -557,7 +539,6 @@
     firstWeekStatic += "<td>8</td>";
     firstWeekStatic += "<td></td>";
     firstWeekStatic += "<td></td>";
-    firstWeekStatic += "</tr>";
     firstWeekStatic += "</tr>"; /*Закрываем строку*/
 
     firstWeekStatic += "</table>"; /*Закрываем таблицу*/
@@ -569,41 +550,25 @@
     // Строка Димы
     twoWeekStatic += "<tr>";
     twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=7;i<14;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i)%4==0){
-            twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            twoWeekStatic += "<td></td>";
-        }
-    }
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
     twoWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Миши
     twoWeekStatic += "<tr>";
     twoWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
-    for(var i=7;i<14;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            twoWeekStatic += "<td></td>";
-        }
-    }
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
     twoWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Ильи
@@ -654,21 +619,14 @@
     // Строка Миши
     threeWeekStatic += "<tr>";
     threeWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    /*Набиваем строку ячейками, начальное значение i увеличиваем на 7, т.к. новая неделя*/
-    for(var i=14;i<21;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i)%4==0){
-            threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i-1)%4==0){
-            threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            threeWeekStatic += "<td></td>";
-        }
-    }
+    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "</tr>";
     threeWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Ильи
@@ -732,21 +690,14 @@
     // Строка Ильи
     fourWeekStatic += "<tr>";
     fourWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
-    /*Набиваем строку ячейками*/
-    for(var i=21;i<28;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-        }
-        /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
-        else if((raznica+i)%4==0){
-            fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-        }
-        /*Если так, значит смены нет, ячейка пустая*/
-        else {
-            fourWeekStatic += "<td></td>";
-        }
-    }
+    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
+    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "<td></td>";
+    fourWeekStatic += "</tr>";
     fourWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Николая
