@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>График 3.5.1</title>
+    <title>График 3.6</title>
 <!--    Пока только на 1-ую неделю, остальные недели пока скрыл, т.к. их еще не делал-->
     <style>
         table	{
@@ -93,16 +93,34 @@
     var startWeek4 = new Date(2020, 4, 25);
     var finishWeek4 = new Date(2020, 6, 1);
 
-    console.log(fullCurrentDate);
-    console.log(startWeek2);
-    console.log(finishWeek2);
+    // Таблицы
+    var table1 = "<table id='table1'>";
+    var table2 = "<table id='table2'>";
+    var table3 = "<table id='table3'>";
+    var table4 = "<table id='table4'>";
+
+    // console.log(fullCurrentDate);
+    // console.log(startWeek2);
+    // console.log(finishWeek2);
 
 
     </script>
 
+<!--Переменные Лавра-->
+<script>
+
+
+
+</script>
+<!--Переменные отпусков-->
+<script>
+    var lavrStartHoliday = new Date(2020, 4, 11);
+    var lavrFinishHoliday = new Date(2020, 4, 21);
+
+</script>
 <!--Первая таблица-->
 <script>
-    var table1 = "<table id='table1'>";
+    // var table1 = "<table id='table1'>";
 
     /*Начинаем новую строку, где будут дни недели*/
     table1 +="<tr>";
@@ -175,8 +193,8 @@
     }
     table1 += "</tr>"; /*Закрываем строку*/
 
-    <!--Строка Лавра - динамическая-->
-    table1 += "<tr>";
+    // Строка Лавра
+    var table1 ="<tr>"
     table1 += "<td class=\"noborder\">" + "Лавр" +"</td>";
     /*Набиваем строку ячейками*/
     for(var i=0;i<7;i++){
@@ -189,7 +207,9 @@
             table1 += "<td></td>";
         }
     }
-    table1 += "</tr>"; /*Закрываем строку*/
+    lavrDinamWeek1 += "</tr>"; /*Закрываем строку*/
+    table1 += lavrDinamWeek1;
+
 
     <!--    Строка Вадима-->
     table1 += "<tr>";
@@ -214,7 +234,7 @@
 
 <!--Вторая таблица-->
 <script>
-    var table2 = "<table id='table2'>"; /*Начинаем таблицу*/
+
 
     table2 +="<tr>";/*Начинаем новую строку, где будут дни недели*/
     table2 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
@@ -302,13 +322,11 @@
 
 
 </script>
-<!--<br>-->
-<!--<hr>-->
 
 <!--Третья таблица-->
 <script>
 
-    var table3 = "<table id='table3'>"; /*Начинаем таблицу*/
+
 
     table3 +="<tr>";/*Начинаем новую строку, где будут дни недели*/
     table3 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
@@ -400,7 +418,7 @@
 <!--Четвертая таблица-->
 <script>
 
-    var table4 = "<table id='table4'>"; /*Начинаем таблицу*/
+
 
     table4 +="<tr>";/*Начинаем новую строку, где будут дни недели*/
     table4 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
