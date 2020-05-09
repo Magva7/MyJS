@@ -50,8 +50,8 @@
 <!--Переменные-->
 <script>
     var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
-    var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
-    // var fullCurrentDate = new Date(2020, 4, 15); /*Задаем дату вручную для теста*/
+    // var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
+    var fullCurrentDate = new Date(2020, 4, 15); /*Задаем дату вручную для теста*/
     var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
     var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
     var firstMonday = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
@@ -109,6 +109,11 @@
     mishaStartHoliday = new Date(2020, 4, 12);
     mishaFinishHoliday = new Date(2020, 5, 11);
     mishaFinishHoliday = new Date(mishaFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Больничный Ильи
+    ilyaStartClinic = new Date(2020, 3, 16);
+    ilyaFinishClinic = new Date(2020, 4, 6);
+    ilyaFinishClinic = new Date(ilyaFinishClinic.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
 
     </script>
 
@@ -215,7 +220,7 @@
 
     <!--    Строка Димы-->
     table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "Д1има" +"</td>";
+    table1 += "<td class=\"noborder\">" + "Дима" +"</td>";
     firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
 
     /*Набиваем строку ячейками*/
@@ -266,7 +271,7 @@
 
     <!--    Строка Миши-->
     table1 += "<tr>";
-    table1 += "<td class=\"noborder\">" + "М1иша" +"</td>";
+    table1 += "<td class=\"noborder\">" + "Миша" +"</td>";
     firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
 
     /*Набиваем строку ячейками*/
@@ -284,6 +289,36 @@
             }
             /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
             else if ((raznica + i-1) % 4 == 0) {
+                table1 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table1 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table1 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Ильи-->
+    table1 += "<tr>";
+    table1 += "<td class=\"noborder\">" + "Илья" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=0;i<7;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+          // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>ilyaStartClinic&&firstMonday<ilyaFinishClinic){
+            table1 += "<td>" + "Б" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i+1) % 4 == 0) {
+                table1 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i) % 4 == 0) {
                 table1 += "<td class=\"night\">" + "Ночь" + "</td>";
             }
             /*Если так, значит смены нет, ячейка пустая*/
@@ -378,7 +413,7 @@
 
     <!--    Строка Димы-->
     table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "Д2има" +"</td>";
+    table2 += "<td class=\"noborder\">" + "Дима" +"</td>";
     firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
 
     /*Набиваем строку ячейками*/
@@ -429,7 +464,7 @@
 
     <!--    Строка Миши-->
     table2 += "<tr>";
-    table2 += "<td class=\"noborder\">" + "М2иша" +"</td>";
+    table2 += "<td class=\"noborder\">" + "Миша" +"</td>";
     firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
 
     /*Набиваем строку ячейками*/
@@ -458,9 +493,37 @@
     firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
     table2 += "</tr>"; /*Закрываем строку*/
 
+    <!--    Строка Ильи-->
+    table2 += "<tr>";
+    table2 += "<td class=\"noborder\">" + "Илья" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=7;i<14;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>ilyaStartClinic&&firstMonday<ilyaFinishClinic){
+            table2 += "<td>" + "Б" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i+1) % 4 == 0) {
+                table2 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i) % 4 == 0) {
+                table2 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table2 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table2 += "</tr>"; /*Закрываем строку*/
+
 </script>
-<!--<br>-->
-<!--<hr>-->
 
 <!--Третья таблица-->
 <script>
@@ -624,6 +687,36 @@
     }
     firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
     table3 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Ильи-->
+    table3 += "<tr>";
+    table3 += "<td class=\"noborder\">" + "Илья" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=14;i<21;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>ilyaStartClinic&&firstMonday<ilyaFinishClinic){
+            table3 += "<td>" + "Б" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i+1) % 4 == 0) {
+                table3 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i) % 4 == 0) {
+                table3 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table3 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table3 += "</tr>"; /*Закрываем строку*/
     
 </script>
 
@@ -721,20 +814,6 @@
 
 <!--&lt;!&ndash;Первая статическая неделя&ndash;&gt;-->
 <!--<script>-->
-<!--    var firstWeekStatic = "";-->
-
-
-<!--    // Строка Миши-->
-<!--    firstWeekStatic += "<tr>";-->
-<!--    firstWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
-<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    firstWeekStatic += "<td></td>";-->
-<!--    firstWeekStatic += "<td></td>";-->
-<!--    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
-<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    firstWeekStatic += "<td></td>";-->
-<!--    firstWeekStatic += "<td></td>";-->
-<!--    firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
 <!--    // Строка Ильи-->
 <!--    firstWeekStatic += "<tr>";-->
@@ -767,29 +846,6 @@
 <!--&lt;!&ndash;Вторая статическая неделя&ndash;&gt;-->
 <!--<script>-->
 <!--    var twoWeekStatic = "";-->
-<!--    // Строка Димы-->
-<!--    // twoWeekStatic += "<tr>";-->
-<!--    // twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
-<!--    // twoWeekStatic += "<td></td>";-->
-<!--    // twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    // twoWeekStatic += "<td></td>";-->
-<!--    // twoWeekStatic += "<td></td>";-->
-<!--    // twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
-<!--    // twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    // twoWeekStatic += "<td></td>";-->
-<!--    // twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
-
-<!--    // Строка Миши-->
-<!--    twoWeekStatic += "<tr>";-->
-<!--    twoWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
-<!--    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "<td>О</td>";-->
-<!--    twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
 <!--    // Строка Ильи-->
 <!--    twoWeekStatic += "<tr>";-->
@@ -823,31 +879,6 @@
 <!--&lt;!&ndash;Третья статическая неделя&ndash;&gt;-->
 <!--<script>-->
 <!--    var threeWeekStatic= "";-->
-<!--    // Строка Димы-->
-<!--    threeWeekStatic += "<tr>";-->
-<!--    threeWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
-<!--    threeWeekStatic += "<td></td>";-->
-<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
-<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    threeWeekStatic += "<td></td>";-->
-<!--    threeWeekStatic += "<td></td>";-->
-<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
-<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
-<!--    threeWeekStatic += "</tr>";-->
-<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
-
-<!--    // Строка Миши-->
-<!--    threeWeekStatic += "<tr>";-->
-<!--    threeWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "<td>О</td>";-->
-<!--    threeWeekStatic += "</tr>";-->
-<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
 <!--    // Строка Ильи-->
 <!--    threeWeekStatic += "<tr>";-->
