@@ -96,7 +96,7 @@
     // Отпуска Лавра
     lavrStartHoliday = new Date(2020, 4, 11);
     lavrFinishHoliday = new Date(2020, 4, 21);
-    lavrStartHoliday = new Date(lavrStartHoliday.valueOf()-sutki); //минус 1 день, чтобы нормально считалось
+    // lavrStartHoliday = new Date(lavrStartHoliday.valueOf()-sutki); //минус 1 день, чтобы нормально считалось
     lavrFinishHoliday = new Date(lavrFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
 
     // Отпуска Димы
@@ -263,6 +263,38 @@
         }
     }
     table1 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Миши-->
+    table1 += "<tr>";
+    table1 += "<td class=\"noborder\">" + "М1иша" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=0;i<7;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Первая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>mishaStartHoliday&&firstMonday<mishaFinishHoliday){
+            table1 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table1 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table1 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table1 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table1 += "</tr>"; /*Закрываем строку*/
+
 </script>
 
 <!--Вторая таблица-->
@@ -395,6 +427,36 @@
     }
     table2 += "</tr>"; /*Закрываем строку*/
 
+    <!--    Строка Миши-->
+    table2 += "<tr>";
+    table2 += "<td class=\"noborder\">" + "М2иша" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=7;i<14;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Первая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>mishaStartHoliday&&firstMonday<mishaFinishHoliday){
+            table2 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table2 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table2 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table2 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table2 += "</tr>"; /*Закрываем строку*/
 
 </script>
 <!--<br>-->
@@ -455,20 +517,62 @@
     table3 += "</tr>"; /*Закрываем строку*/
 
 
-    <!--Строка Лавра-->
+    <!--Строка Лавра -->
     table3 += "<tr>";
     table3 += "<td class=\"noborder\">" + "Лавр" +"</td>";
     /*Набиваем строку ячейками*/
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
     for(var i=14;i<21;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            table3 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Вторая неделя Лавра: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
+            table3 += "<td>" + "О" +"</td>";
         }
-        /*Если так, значит смены нет, ячейка пустая*/
         else {
-            table3 += "<td></td>";
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if((raznica+i+1)%4==0){
+                table3 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table3 += "<td></td>";
+            }
         }
     }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table3 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Димы-->
+    table3 += "<tr>";
+    table3 += "<td class=\"noborder\">" + "Д3има" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=14;i<21;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Вторая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>dimaStartHoliday&&firstMonday<dimaFinishHoliday){
+            table3 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table3 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table3 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table3 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table3 += "</tr>"; /*Закрываем строку*/
 
     <!--    Строка Вадима-->
     table3 += "<tr>";
@@ -488,6 +592,37 @@
             table3 += "<td></td>";
         }
     }
+    table3 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Миши-->
+    table3 += "<tr>";
+    table3 += "<td class=\"noborder\">" + "М3иша" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=14;i<21;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Первая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>mishaStartHoliday&&firstMonday<mishaFinishHoliday){
+            table3 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table3 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table3 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table3 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
     table3 += "</tr>"; /*Закрываем строку*/
     
 </script>
@@ -588,17 +723,6 @@
 <!--<script>-->
 <!--    var firstWeekStatic = "";-->
 
-<!--    // Строка Димы-->
-<!--    // firstWeekStatic += "<tr>";-->
-<!--    // firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
-<!--    // firstWeekStatic += "<td></td>";-->
-<!--    // firstWeekStatic += "<td></td>";-->
-<!--    // firstWeekStatic += "<td>О</td>";-->
-<!--    // firstWeekStatic += "<td>О</td>";-->
-<!--    // firstWeekStatic += "<td>О</td>";-->
-<!--    // firstWeekStatic += "<td></td>";-->
-<!--    // firstWeekStatic += "<td></td>";-->
-<!--    // firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
 <!--    // Строка Миши-->
 <!--    firstWeekStatic += "<tr>";-->
@@ -850,8 +974,8 @@
     document.write(table2); /*Выводим таблицу*/
     document.write("<br><hr>");
 
-    // document.write(table3); /*Выводим таблицу*/
-    // document.write("<br><hr>");
+    document.write(table3); /*Выводим таблицу*/
+    document.write("<br><hr>");
     //
     // document.write(table4); /*Выводим таблицу*/
 </script>
