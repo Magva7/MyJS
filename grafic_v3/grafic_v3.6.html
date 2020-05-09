@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>График 3.5.1</title>
+    <title>График 3.6</title>
 <!--    Пока только на 1-ую неделю, остальные недели пока скрыл, т.к. их еще не делал-->
     <style>
         table	{
@@ -93,14 +93,22 @@
     var startWeek4 = new Date(2020, 4, 25);
     var finishWeek4 = new Date(2020, 6, 1);
 
-    // Даты начала отпусков
-    lavrStartHoliday = new Date(2020, 4, 4);
-    lavrFinishHoliday = new Date(2020, 4, 8);
+    // Отпуска Лавра
+    lavrStartHoliday = new Date(2020, 4, 11);
+    lavrFinishHoliday = new Date(2020, 4, 21);
+    lavrStartHoliday = new Date(lavrStartHoliday.valueOf()-sutki); //минус 1 день, чтобы нормально считалось
     lavrFinishHoliday = new Date(lavrFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
-    // console.log(fullCurrentDate);
-    // console.log(startWeek2);
-    // console.log(finishWeek2);
 
+    // Отпуска Димы
+    dimaStartHoliday = new Date(2020, 1, 6);
+    dimaFinishHoliday = new Date(2020, 4, 11);
+    // dimaStartHoliday = new Date(dimaStartHoliday.valueOf()-sutki); //минус 1 день, чтобы нормально считалось
+    dimaFinishHoliday = new Date(dimaFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Отпуска Миши
+    mishaStartHoliday = new Date(2020, 4, 12);
+    mishaFinishHoliday = new Date(2020, 5, 11);
+    mishaFinishHoliday = new Date(mishaFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
 
     </script>
 
@@ -179,15 +187,14 @@
     }
     table1 += "</tr>"; /*Закрываем строку*/
 
-    <!--Строка Лавра - динамическая-->
+    <!--Строка Лавра -->
     table1 += "<tr>";
     table1 += "<td class=\"noborder\">" + "Лавр" +"</td>";
     /*Набиваем строку ячейками*/
-    firstMonday = new Date(firstMonday.valueOf()-8*sutki);
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
     for(var i=0;i<7;i++){
-        firstMonday = new Date(firstMonday.valueOf()+sutki);
-        console.log(firstMonday);
-
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Первая неделя Лавра: "+firstMonday);
         // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
         if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
             table1 += "<td>" + "О" +"</td>";
@@ -202,10 +209,39 @@
                 table1 += "<td></td>";
             }
         }
-
-
     }
-    firstMonday = new Date(firstMonday.valueOf()+sutki);
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table1 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Димы-->
+    table1 += "<tr>";
+    table1 += "<td class=\"noborder\">" + "Д1има" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=0;i<7;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Первая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>dimaStartHoliday&&firstMonday<dimaFinishHoliday){
+            table1 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table1 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table1 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table1 += "<td></td>";
+            }
+        }
+    }
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
     table1 += "</tr>"; /*Закрываем строку*/
 
     <!--    Строка Вадима-->
@@ -282,20 +318,62 @@
     }
     table2 += "</tr>"; /*Закрываем строку*/
 
-    <!--Строка Лавра-->
+    <!--Строка Лавра -->
     table2 += "<tr>";
     table2 += "<td class=\"noborder\">" + "Лавр" +"</td>";
     /*Набиваем строку ячейками*/
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
     for(var i=7;i<14;i++){
-        /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
-        if((raznica+i+1)%4==0){
-            table2 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Вторая неделя Лавра: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
+            table2 += "<td>" + "О" +"</td>";
         }
-        /*Если так, значит смены нет, ячейка пустая*/
         else {
-            table2 += "<td></td>";
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if((raznica+i+1)%4==0){
+                table2 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table2 += "<td></td>";
+            }
         }
     }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table2 += "</tr>"; /*Закрываем строку*/
+
+    <!--    Строка Димы-->
+    table2 += "<tr>";
+    table2 += "<td class=\"noborder\">" + "Д2има" +"</td>";
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+
+    /*Набиваем строку ячейками*/
+    for(var i=7;i<14;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        console.log("Вторая неделя Димы: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>dimaStartHoliday&&firstMonday<dimaFinishHoliday){
+            table2 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if ((raznica + i) % 4 == 0) {
+                table2 += "<td class=\"day\">" + "День" + "</td>";
+            }
+            /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+            else if ((raznica + i-1) % 4 == 0) {
+                table2 += "<td class=\"night\">" + "Ночь" + "</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table2 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table2 += "</tr>"; /*Закрываем строку*/
 
     <!--    Строка Вадима-->
     table2 += "<tr>";
@@ -506,263 +584,263 @@
     
 </script>
 
-<!--Первая статическая неделя-->
-<script>
-    var firstWeekStatic = "";
+<!--&lt;!&ndash;Первая статическая неделя&ndash;&gt;-->
+<!--<script>-->
+<!--    var firstWeekStatic = "";-->
 
-    // Строка Димы
-    firstWeekStatic += "<tr>";
-    firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td>О</td>";
-    firstWeekStatic += "<td>О</td>";
-    firstWeekStatic += "<td>О</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Димы-->
+<!--    // firstWeekStatic += "<tr>";-->
+<!--    // firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
+<!--    // firstWeekStatic += "<td></td>";-->
+<!--    // firstWeekStatic += "<td></td>";-->
+<!--    // firstWeekStatic += "<td>О</td>";-->
+<!--    // firstWeekStatic += "<td>О</td>";-->
+<!--    // firstWeekStatic += "<td>О</td>";-->
+<!--    // firstWeekStatic += "<td></td>";-->
+<!--    // firstWeekStatic += "<td></td>";-->
+<!--    // firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Миши
-    firstWeekStatic += "<tr>";
-    firstWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Миши-->
+<!--    firstWeekStatic += "<tr>";-->
+<!--    firstWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
+<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Ильи
-    firstWeekStatic += "<tr>";
-    firstWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
-    firstWeekStatic += "<td>Б</td>";
-    firstWeekStatic += "<td>Б</td>";
-    firstWeekStatic += "<td>Б</td>";
-    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Ильи-->
+<!--    firstWeekStatic += "<tr>";-->
+<!--    firstWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";-->
+<!--    firstWeekStatic += "<td>Б</td>";-->
+<!--    firstWeekStatic += "<td>Б</td>";-->
+<!--    firstWeekStatic += "<td>Б</td>";-->
+<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Николая
-    firstWeekStatic += "<tr>";
-    firstWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
-    firstWeekStatic += "<td></td>";
+<!--    // Строка Николая-->
+<!--    firstWeekStatic += "<tr>";-->
+<!--    firstWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    firstWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
+<!--    firstWeekStatic += "<td></td>";-->
 
-    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    firstWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    firstWeekStatic += "</table>"; /*Закрываем таблицу*/
-</script>
+<!--    firstWeekStatic += "</table>"; /*Закрываем таблицу*/-->
+<!--</script>-->
 
-<!--Вторая статическая неделя-->
-<script>
-    var twoWeekStatic = "";
-    // Строка Димы
-    twoWeekStatic += "<tr>";
-    twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--&lt;!&ndash;Вторая статическая неделя&ndash;&gt;-->
+<!--<script>-->
+<!--    var twoWeekStatic = "";-->
+<!--    // Строка Димы-->
+<!--    // twoWeekStatic += "<tr>";-->
+<!--    // twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
+<!--    // twoWeekStatic += "<td></td>";-->
+<!--    // twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    // twoWeekStatic += "<td></td>";-->
+<!--    // twoWeekStatic += "<td></td>";-->
+<!--    // twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    // twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    // twoWeekStatic += "<td></td>";-->
+<!--    // twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Миши
-    twoWeekStatic += "<tr>";
-    twoWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "<td>О</td>";
-    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Миши-->
+<!--    twoWeekStatic += "<tr>";-->
+<!--    twoWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
+<!--    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "<td>О</td>";-->
+<!--    twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Ильи
-    twoWeekStatic += "<tr>";
-    twoWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
-    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "</tr>";
-    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Ильи-->
+<!--    twoWeekStatic += "<tr>";-->
+<!--    twoWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";-->
+<!--    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    twoWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "</tr>";-->
+<!--    twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Николая
-    twoWeekStatic += "<tr>";
-    twoWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td>8</td>";
-    twoWeekStatic += "<td>8</td>";
-    twoWeekStatic += "<td>8</td>";
-    twoWeekStatic += "<td>8</td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "<td></td>";
-    twoWeekStatic += "</tr>";
-    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Николая-->
+<!--    twoWeekStatic += "<tr>";-->
+<!--    twoWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "<td>8</td>";-->
+<!--    twoWeekStatic += "<td>8</td>";-->
+<!--    twoWeekStatic += "<td>8</td>";-->
+<!--    twoWeekStatic += "<td>8</td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "<td></td>";-->
+<!--    twoWeekStatic += "</tr>";-->
+<!--    twoWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    twoWeekStatic += "</table>"; /*Закрываем таблицу*/
-</script>
+<!--    twoWeekStatic += "</table>"; /*Закрываем таблицу*/-->
+<!--</script>-->
 
-<!--Третья статическая неделя-->
-<script>
-    var threeWeekStatic= "";
-    // Строка Димы
-    threeWeekStatic += "<tr>";
-    threeWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    threeWeekStatic += "</tr>";
-    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--&lt;!&ndash;Третья статическая неделя&ndash;&gt;-->
+<!--<script>-->
+<!--    var threeWeekStatic= "";-->
+<!--    // Строка Димы-->
+<!--    threeWeekStatic += "<tr>";-->
+<!--    threeWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    threeWeekStatic += "</tr>";-->
+<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Миши
-    threeWeekStatic += "<tr>";
-    threeWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "<td>О</td>";
-    threeWeekStatic += "</tr>";
-    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Миши-->
+<!--    threeWeekStatic += "<tr>";-->
+<!--    threeWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "<td>О</td>";-->
+<!--    threeWeekStatic += "</tr>";-->
+<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Ильи
-    threeWeekStatic += "<tr>";
-    threeWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
-    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "</tr>";
-    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Ильи-->
+<!--    threeWeekStatic += "<tr>";-->
+<!--    threeWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";-->
+<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    threeWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "</tr>";-->
+<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Николая
-    threeWeekStatic += "<tr>";
-    threeWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
-    threeWeekStatic += "<td>8</td>";
-    threeWeekStatic += "<td>8</td>";
-    threeWeekStatic += "<td>8</td>";
-    threeWeekStatic += "<td>8</td>";
-    threeWeekStatic += "<td>8</td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "<td></td>";
-    threeWeekStatic += "</tr>";
-    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Николая-->
+<!--    threeWeekStatic += "<tr>";-->
+<!--    threeWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";-->
+<!--    threeWeekStatic += "<td>8</td>";-->
+<!--    threeWeekStatic += "<td>8</td>";-->
+<!--    threeWeekStatic += "<td>8</td>";-->
+<!--    threeWeekStatic += "<td>8</td>";-->
+<!--    threeWeekStatic += "<td>8</td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "<td></td>";-->
+<!--    threeWeekStatic += "</tr>";-->
+<!--    threeWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    threeWeekStatic += "</table>"; /*Закрываем таблицу*/
-</script>
+<!--    threeWeekStatic += "</table>"; /*Закрываем таблицу*/-->
+<!--</script>-->
 
-<!--Четвертая статическая неделя-->
-<script>
-    var fourWeekStatic = "";
-    // Строка Димы
-    fourWeekStatic += "<tr>";
-    fourWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    fourWeekStatic += "</tr>";
-    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--&lt;!&ndash;Четвертая статическая неделя&ndash;&gt;-->
+<!--<script>-->
+<!--    var fourWeekStatic = "";-->
+<!--    // Строка Димы-->
+<!--    fourWeekStatic += "<tr>";-->
+<!--    fourWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    fourWeekStatic += "</tr>";-->
+<!--    fourWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Миши
-    fourWeekStatic += "<tr>";
-    fourWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "<td>О</td>";
-    fourWeekStatic += "</tr>";
-    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Миши-->
+<!--    fourWeekStatic += "<tr>";-->
+<!--    fourWeekStatic += "<td class=\"noborder\">" + "Миша" +"</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "<td>О</td>";-->
+<!--    fourWeekStatic += "</tr>";-->
+<!--    fourWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Ильи
-    fourWeekStatic += "<tr>";
-    fourWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";
-    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";
-    fourWeekStatic += "</tr>";
-    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Ильи-->
+<!--    fourWeekStatic += "<tr>";-->
+<!--    fourWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td class=\"day\">" + "День" +"</td>";-->
+<!--    fourWeekStatic += "<td class=\"night\">" + "Ночь" +"</td>";-->
+<!--    fourWeekStatic += "</tr>";-->
+<!--    fourWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    // Строка Николая
-    fourWeekStatic += "<tr>";
-    fourWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
-    fourWeekStatic += "<td>8</td>";
-    fourWeekStatic += "<td>8</td>";
-    fourWeekStatic += "<td>8</td>";
-    fourWeekStatic += "<td>8</td>";
-    fourWeekStatic += "<td>8</td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "<td></td>";
-    fourWeekStatic += "</tr>";
-    fourWeekStatic += "</tr>"; /*Закрываем строку*/
+<!--    // Строка Николая-->
+<!--    fourWeekStatic += "<tr>";-->
+<!--    fourWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";-->
+<!--    fourWeekStatic += "<td>8</td>";-->
+<!--    fourWeekStatic += "<td>8</td>";-->
+<!--    fourWeekStatic += "<td>8</td>";-->
+<!--    fourWeekStatic += "<td>8</td>";-->
+<!--    fourWeekStatic += "<td>8</td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "<td></td>";-->
+<!--    fourWeekStatic += "</tr>";-->
+<!--    fourWeekStatic += "</tr>"; /*Закрываем строку*/-->
 
-    fourWeekStatic += "</table>"; /*Закрываем таблицу*/
-    </script>
+<!--    fourWeekStatic += "</table>"; /*Закрываем таблицу*/-->
+<!--    </script>-->
 
 <!--Условия - добавляем статические части графика к таблицам в зависимости от недели-->
-<script>
-    // Если текущая дата в рамках первой недели, то добавляем в первую таблицу firstWeekStatic, во вторую twoWeekStatic и т.д.
-    if(fullCurrentDate>startWeek1&&fullCurrentDate<finishWeek1){
-        table1 += firstWeekStatic;
-        table2 += twoWeekStatic;
-        table3 += threeWeekStatic;
-        table4 += fourWeekStatic;
-    }
+<!--<script>-->
+<!--    // Если текущая дата в рамках первой недели, то добавляем в первую таблицу firstWeekStatic, во вторую twoWeekStatic и т.д.-->
+<!--    if(fullCurrentDate>startWeek1&&fullCurrentDate<finishWeek1){-->
+<!--        table1 += firstWeekStatic;-->
+<!--        table2 += twoWeekStatic;-->
+<!--        table3 += threeWeekStatic;-->
+<!--        table4 += fourWeekStatic;-->
+<!--    }-->
 
-    // Если текущая дата в рамках второй недели, то добавляем в первую таблицу twoWeekStatic и т.д.
-    if(fullCurrentDate>startWeek2&&fullCurrentDate<finishWeek2){
-        table1 += twoWeekStatic;
-        table2 += threeWeekStatic;
-        table3 += fourWeekStatic;
-    }
+<!--    // Если текущая дата в рамках второй недели, то добавляем в первую таблицу twoWeekStatic и т.д.-->
+<!--    if(fullCurrentDate>startWeek2&&fullCurrentDate<finishWeek2){-->
+<!--        table1 += twoWeekStatic;-->
+<!--        table2 += threeWeekStatic;-->
+<!--        table3 += fourWeekStatic;-->
+<!--    }-->
 
-    // Если текущая дата в рамках третьей недели, то добавляем в первую таблицу threeWeekStatic и т.д.
-    if(fullCurrentDate>startWeek3&&fullCurrentDate<finishWeek3){
-        table1 += threeWeekStatic;
-        table2 += fourWeekStatic;
-    }
+<!--    // Если текущая дата в рамках третьей недели, то добавляем в первую таблицу threeWeekStatic и т.д.-->
+<!--    if(fullCurrentDate>startWeek3&&fullCurrentDate<finishWeek3){-->
+<!--        table1 += threeWeekStatic;-->
+<!--        table2 += fourWeekStatic;-->
+<!--    }-->
 
-    // Если текущая дата в рамках четвертой недели, то добавляем в первую таблицу fourWeekStatic и т.д.
-    if(fullCurrentDate>startWeek4&&fullCurrentDate<finishWeek4){
-        table1 += fourWeekStatic;
+<!--    // Если текущая дата в рамках четвертой недели, то добавляем в первую таблицу fourWeekStatic и т.д.-->
+<!--    if(fullCurrentDate>startWeek4&&fullCurrentDate<finishWeek4){-->
+<!--        table1 += fourWeekStatic;-->
 
-    }
-</script>
+<!--    }-->
+<!--</script>-->
 
 <!--Выводим таблицы-->
 <script>
@@ -772,10 +850,10 @@
     document.write(table2); /*Выводим таблицу*/
     document.write("<br><hr>");
 
-    document.write(table3); /*Выводим таблицу*/
-    document.write("<br><hr>");
-
-    document.write(table4); /*Выводим таблицу*/
+    // document.write(table3); /*Выводим таблицу*/
+    // document.write("<br><hr>");
+    //
+    // document.write(table4); /*Выводим таблицу*/
 </script>
 </body>
 </html>
