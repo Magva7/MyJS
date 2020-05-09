@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>График 3.5</title>
+    <title>График 3.5.1</title>
 <!--    Пока только на 1-ую неделю, остальные недели пока скрыл, т.к. их еще не делал-->
     <style>
         table	{
@@ -100,6 +100,12 @@
 
     </script>
 
+<!--Переменные отпусков-->
+<script>
+    var lavrStartHoliday = new Date(2020, 4, 11);
+    var lavrFinishHoliday = new Date(2020, 4, 21);
+
+</script>
 <!--Первая таблица-->
 <script>
     var table1 = "<table id='table1'>";
@@ -175,7 +181,7 @@
     }
     table1 += "</tr>"; /*Закрываем строку*/
 
-    <!--Строка Лавра-->
+    <!--Строка Лавра - динамическая-->
     table1 += "<tr>";
     table1 += "<td class=\"noborder\">" + "Лавр" +"</td>";
     /*Набиваем строку ячейками*/
@@ -750,6 +756,7 @@
 <!--Выводим таблицы-->
 <script>
     document.write(table1); /*Выводим таблицу*/
+    document.write("<br><hr>");
 
     document.write(table2); /*Выводим таблицу*/
     document.write("<br><hr>");
@@ -758,7 +765,6 @@
     document.write("<br><hr>");
 
     document.write(table4); /*Выводим таблицу*/
-    document.write("<br><hr>");
 </script>
 </body>
 </html>
