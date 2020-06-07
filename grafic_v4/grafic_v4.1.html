@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>График 4.1</title>
+    <style>
+        table	{
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td	{
+            border: 2px solid black;
+            text-align: center;
+            /*width: 160px;*/
+            font-size: 34px;
+        }
+
+        .current	{
+            /*background: #fcc;*/
+            /*border: 2px solid black;*/
+            font-weight: bold;} /*жирный шрифт*/
+
+        .noborder {
+            border: 0;
+        }
+
+        .sutki{
+            background-color: salmon;
+        }
+
+        .day{
+            background-color: yellow;
+        }
+
+        .night{
+            background-color: lightblue;
+        }
+
+        .red{
+            color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--Переменные-->
+<script>
+    var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
+    var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
+    // var fullCurrentDate = new Date(2020, 4, 15); /*Задаем дату вручную для теста*/
+    var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
+    var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
+    var firstMonday = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
+    var dateDnevnaya = new Date(2020, 1, 21);/*Задаем дату дневной смены, которая была раньше, и с которой будем сравнивать*/
+
+    var options1 = {
+        weekday: 'short',
+    }; // задаем опции - что и в каком виде будет отображаться день недели
+
+    var options2 = {
+        month: 'short',
+        day: 'numeric',
+        // weekday: 'short',
+    }; /* задаем опции - в каком виде будет отображаться дата*/
+
+    /*Задаем дату первого дня первой недели - т.к. в англ. отчет идет с воскресенья, т.е. воскресенье это 0 день недели,
+    * а понедельник - 1-ый, то делаем условие, если сегодня понедельник, значит дата первого понедельника будет равна
+    * текущей дате, минус 6, а если любой другой день недели, то дата первого понедельника будет равна текущей дате,
+    * минус 1 и умноженное на номер дня в неделе, т.е. отсчитываем назад столько суток, сколько прошло с понедельника*/
+    if(currentDayWeek==0){
+        firstMonday = new Date(fullCurrentDate.valueOf()-sutki*6);
+    } else {
+        firstMonday = new Date(fullCurrentDate.valueOf()-sutki*(currentDayWeek-1));
+    }
+
+
+    var raznica = Math.floor((firstMonday-dateDnevnaya)/sutki); /*Разница между датами, округленная до целого вниз*/
+
+    // Даты начала и конца недель
+    var startWeek1 = new Date(2020, 4, 11);
+    var finishWeek1 = new Date(2020, 4, 18);
+
+    var startWeek2 = new Date(2020, 4, 18);
+    var finishWeek2 = new Date(2020, 4, 25);
+
+    var startWeek3 = new Date(2020, 4, 25);
+    var finishWeek3 = new Date(2020, 5, 1);
+
+
+    // Мои отпуска
+    uranStartHoliday = new Date(2020, 5, 12);
+    uranFinishHoliday = new Date(2020, 5, 25);
+    uranFinishHoliday = new Date(uranFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Отпуска Лавра
+    lavrStartHoliday = new Date(2020, 4, 11);
+    lavrFinishHoliday = new Date(2020, 4, 21);
+    lavrFinishHoliday = new Date(lavrFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Отпуска Димы
+    dimaStartHoliday = new Date(2020, 4, 6);
+    dimaFinishHoliday = new Date(2020, 4, 11);
+    dimaFinishHoliday = new Date(dimaFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Отпуска Миши
+    mishaStartHoliday = new Date(2020, 4, 12);
+    mishaFinishHoliday = new Date(2020, 5, 11);
+    mishaFinishHoliday = new Date(mishaFinishHoliday.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    // Больничный Ильи
+    ilyaStartClinic = new Date(2020, 3, 16);
+    ilyaFinishClinic = new Date(2020, 4, 6);
+    ilyaFinishClinic = new Date(ilyaFinishClinic.valueOf()+sutki); //плюс 1 день, чтобы нормально считалось
+
+    </script>
+
+<!--Первая таблица-->
+<script>
+    var table1 = "<table id='table1'>";
+
+    /*Начинаем новую строку, где будут дни недели*/
+    table1 +="<tr>";
+    table1 += "<td class=\"noborder\">" + " " + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели*/
+    for (var i =0 ; i < 7; i++){
+        if(i==5||i==6) { /*если это 6-ая или 7-ая ячейка, то*/
+            if(firstMonday.getDate() == currentDate) { /*Сравниваем день недели, который должен сгенериться в ячейке
+            с текущим, если да, то создается и добавляется ячейка с классами current и red, т.е. жирным и красным*/
+                table1 += "<td class=\"current red\" >" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+            } else {/*если нет, то с классом noborder и red, я там границы потом уберу*/
+                table1 += "<td class=\"noborder red\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+            }
+
+        } else if(firstMonday.getDate() == currentDate) { /*Проверка - равна ли дата текущей дате, если да, то создается и
+        добавляется ячейка с классом current, я ему потом задам жирный, если нет, то с классом noborder, я там границы потом уберу*/
+            table1 += "<td class=\"current\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";/*каждую итерацию в строку добавляется
+        //     новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+        //     переменной option*/
+        } else {
+            table1 += "<td class=\"noborder\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+
+        }
+        firstMonday = new Date(firstMonday.valueOf()+sutki);/*Каждую итерацию к переменной firstDay добавляется
+        //      еще 1 день в миллисекундах*/
+    }
+    table1 += "</tr>"; /*Закрываем строку*/
+
+
+    firstMonday = new Date(firstMonday.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    /*Начинаем новую строку, где будут даты*/
+    table1 +="<tr>";
+    table1 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них даты*/
+    for (var i =0 ; i < 7; i++){
+        if(firstMonday.getDate() == currentDate) { /*Проверка - равна ли дата текущей дате, если да, то создается и
+        добавляется ячейка с классом current, я ему потом задам жирный, если нет, то с классом noborder, я там границы потом уберу*/
+            table1 += "<td class=\"current\">" + (firstMonday.toLocaleString("ru", options2)) + "</td>";/*каждую итерацию в строку добавляется
+        //     новая ячейка, а внутри ячейки выводится текущее значение переменной firstDay в том виде, который задан в
+        //     переменной option*/
+
+        } else {
+            table1 += "<td>" + (firstMonday.toLocaleString("ru", options2)) + "</td>";
+        }
+        firstMonday = new Date(firstMonday.valueOf()+sutki);/*Каждую итерацию к переменной firstDay добавляется
+        //      еще 1 день в миллисекундах*/
+    }
+
+    table1 += "</tr>"; /*Закрываем строку*/
+
+    // Функция, которая рисует строку с графиком, в нее передаем начало и конец отсчета, имя, смещение и даты начала и конца отпуска
+    function drawStringTable1(iStart, iFinish, name, smeschenie, startHoliday, finishHoliday) {
+        // console.log("Тест1 при запуске фунции - проверяем, передалась ли дата начала отпуска, сейчас дата начала: "+startHoliday);
+        firstMonday = new Date(firstMonday.valueOf() - 8 * sutki); //отнимаем 7 суток, а то не работает
+        table1 += "<tr>";
+        table1 += "<td class=\"noborder\">" + name + "</td>";
+        /*Набиваем строку ячейками*/
+        for (var i = iStart; i < iFinish; i++) {
+            firstMonday = new Date(firstMonday.valueOf() + sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+            // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+            // console.log(firstMonday);
+            if (firstMonday > startHoliday && firstMonday < finishHoliday) {
+                table1 += "<td>" + "О" + "</td>";
+            } else {
+                /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+                if ((raznica + i + smeschenie + 1) % 4 == 0) {
+                    table1 += "<td class=\"day\">" + "День" + "</td>";
+                }
+                /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+                else if ((raznica + i + smeschenie) % 4 == 0) {
+                    table1 += "<td class=\"night\">" + "Ночь" + "</td>";
+                }
+                /*Если так, значит смены нет, ячейка пустая*/
+                else {
+                    table1 += "<td></td>";
+                }
+            }
+        }
+        firstMonday = new Date(firstMonday.valueOf() + sutki); //прибавляем еще сутки, а то не работает
+        table1 += "</tr>"; /*Закрываем строку*/
+        // console.log("Тест2 в конце функции: "+startHoliday);
+    }
+    function drawStringTable2(iStart, iFinish, name, smeschenie, startHoliday, finishHoliday) {
+        // console.log("Тест1 при запуске фунции - проверяем, передалась ли дата начала отпуска, сейчас дата начала: "+startHoliday);
+        firstMonday = new Date(firstMonday.valueOf() - 8 * sutki); //отнимаем 7 суток, а то не работает
+        table2 += "<tr>";
+        table2 += "<td class=\"noborder\">" + name + "</td>";
+        /*Набиваем строку ячейками*/
+        for (var i = iStart; i < iFinish; i++) {
+            firstMonday = new Date(firstMonday.valueOf() + sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+            // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+            // console.log(firstMonday);
+            if (firstMonday > startHoliday && firstMonday < finishHoliday) {
+                table2 += "<td>" + "О" + "</td>";
+            } else {
+                /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+                if ((raznica + i + smeschenie + 1) % 4 == 0) {
+                    table2 += "<td class=\"day\">" + "День" + "</td>";
+                }
+                /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+                else if ((raznica + i + smeschenie) % 4 == 0) {
+                    table2 += "<td class=\"night\">" + "Ночь" + "</td>";
+                }
+                /*Если так, значит смены нет, ячейка пустая*/
+                else {
+                    table2 += "<td></td>";
+                }
+            }
+        }
+        firstMonday = new Date(firstMonday.valueOf() + sutki); //прибавляем еще сутки, а то не работает
+        table2 += "</tr>"; /*Закрываем строку*/
+        // console.log("Тест2 в конце функции: "+startHoliday);
+    }
+    function drawStringTable3(iStart, iFinish, name, smeschenie, startHoliday, finishHoliday) {
+        // console.log("Тест1 при запуске фунции - проверяем, передалась ли дата начала отпуска, сейчас дата начала: "+startHoliday);
+        firstMonday = new Date(firstMonday.valueOf() - 8 * sutki); //отнимаем 7 суток, а то не работает
+        table3 += "<tr>";
+        table3 += "<td class=\"noborder\">" + name + "</td>";
+        /*Набиваем строку ячейками*/
+        for (var i = iStart; i < iFinish; i++) {
+            firstMonday = new Date(firstMonday.valueOf() + sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+            // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+            // console.log(firstMonday);
+            if (firstMonday > startHoliday && firstMonday < finishHoliday) {
+                table3 += "<td>" + "О" + "</td>";
+            } else {
+                /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+                if ((raznica + i + smeschenie + 1) % 4 == 0) {
+                    table3 += "<td class=\"day\">" + "День" + "</td>";
+                }
+                /*Проверяем, если разница дат -1 делится без остатка на 4, значит ночная*/
+                else if ((raznica + i + smeschenie) % 4 == 0) {
+                    table3 += "<td class=\"night\">" + "Ночь" + "</td>";
+                }
+                /*Если так, значит смены нет, ячейка пустая*/
+                else {
+                    table3 += "<td></td>";
+                }
+            }
+        }
+        firstMonday = new Date(firstMonday.valueOf() + sutki); //прибавляем еще сутки, а то не работает
+        table3 += "</tr>"; /*Закрываем строку*/
+        // console.log("Тест2 в конце функции: "+startHoliday);
+    }
+
+    // Вызываем нашу функцию, чтобы сгенерились строки
+    drawStringTable1(0, 7, "Юран", 1,uranStartHoliday,uranFinishHoliday);
+    drawStringTable1(0, 7, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    drawStringTable1(0, 7, "Вадим", 2);
+    drawStringTable1(0, 7, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
+    drawStringTable1(0, 7, "Илья", 0);
+
+    <!--Строка Лавра -->
+    table1 += "<tr>";
+    table1 += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    /*Набиваем строку ячейками*/
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+    for(var i=0;i<7;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
+            table1 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if((raznica+i+1)%4==0){
+                table1 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table1 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table1 += "</tr>"; /*Закрываем строку*/
+
+</script>
+
+<!--Вторая таблица-->
+<script>
+    var table2 = "<table id='table2'>"; /*Начинаем таблицу*/
+
+    table2 +="<tr>";/*Начинаем новую строку, где будут дни недели*/
+    table2 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+    * текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+            if(i==5||i==6){
+                table2 += "<td class=\"noborder red\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+            } else{
+                table2 += "<td class=\"noborder\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+            }
+            firstMonday = new Date(firstMonday.valueOf()+sutki);
+    }
+    table2 += "</tr>"; /*Закрываем строку*/
+
+
+    firstMonday = new Date(firstMonday.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    table2 +="<tr>" /*Начинаем новую строку, где будут даты*/
+    table2 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+* текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+            table2 += "<td>" + (firstMonday.toLocaleString("ru", options2)) + "</td>";
+            firstMonday = new Date(firstMonday.valueOf()+sutki);
+    }
+
+    table2 += "</tr>"; /*Закрываем строку*/
+
+    drawStringTable2(7, 14, "Юран", 1,uranStartHoliday,uranFinishHoliday);
+    drawStringTable2(7, 14, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    drawStringTable2(7, 14, "Вадим", 2);
+    drawStringTable2(7, 14, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
+    drawStringTable2(7, 14, "Илья", 0);
+
+    <!--Строка Лавра -->
+    table2 += "<tr>";
+    table2 += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    /*Набиваем строку ячейками*/
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+    for(var i=7;i<14;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        // console.log("Вторая неделя Лавра: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
+            table2 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if((raznica+i+1)%4==0){
+                table2 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table2 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table2 += "</tr>"; /*Закрываем строку*/
+
+</script>
+
+<!--Третья таблица-->
+<script>
+
+    var table3 = "<table id='table3'>"; /*Начинаем таблицу*/
+
+    table3 +="<tr>";/*Начинаем новую строку, где будут дни недели*/
+    table3 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+    * текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+        if(i==5||i==6){
+            table3 += "<td class=\"noborder red\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+        } else{
+            table3 += "<td class=\"noborder\">" + (firstMonday.toLocaleString("ru", options1)) + "</td>";
+        }
+        firstMonday = new Date(firstMonday.valueOf()+sutki);
+    }
+    table3 += "</tr>"; /*Закрываем строку*/
+
+
+    firstMonday = new Date(firstMonday.valueOf()-7*sutki); /*Снова задаем дату, т.к. в предыдущем цикле мы ее
+    увеличили на 7, поэтому теперь уменьшаем*/
+
+    table3 +="<tr>" /*Начинаем новую строку, где будут даты*/
+    table3 += "<td class=\"noborder\">" + "" + "</td>"; //Добавляем в строку первую пустую ячейку
+    /*Добавляем циклом в строку ячейки, а внутри них дни недели, тут уже проверка на текущую дату не нужна, т.к.
+* текущая дата 100% в первой таблице*/
+    for (var i =0 ; i < 7; i++){
+        table3 += "<td>" + (firstMonday.toLocaleString("ru", options2)) + "</td>";
+        firstMonday = new Date(firstMonday.valueOf()+sutki);
+    }
+
+    table3 += "</tr>"; /*Закрываем строку*/
+
+    drawStringTable3(14, 21, "Юран", 1,uranStartHoliday,uranFinishHoliday);
+    drawStringTable3(14, 21, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    drawStringTable3(14, 21, "Вадим", 2);
+    drawStringTable3(14, 21, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
+    drawStringTable3(14, 21, "Илья", 0);
+
+
+    <!--Строка Лавра -->
+    table3 += "<tr>";
+    table3 += "<td class=\"noborder\">" + "Лавр" +"</td>";
+    /*Набиваем строку ячейками*/
+    firstMonday = new Date(firstMonday.valueOf()-8*sutki); //отнимаем 8 суток, а то не работает
+    for(var i=14;i<21;i++){
+        firstMonday = new Date(firstMonday.valueOf()+sutki); //каждую итерацию увеличиваем дату, чтобы ячейка сверялась
+        // console.log("Вторая неделя Лавра: "+firstMonday);
+        // Проверяем, не попадает ли текущая дата в диапазон отпуска, если да, то рисуем О, если нет, то как обычно
+        if(firstMonday>lavrStartHoliday&&firstMonday<lavrFinishHoliday){
+            table3 += "<td>" + "О" +"</td>";
+        }
+        else {
+            /*Проверяем, если разница дат делится без остатка на 4, в ячейке, каждый цикл увеличиваем дату на 1 через i*/
+            if((raznica+i+1)%4==0){
+                table3 += "<td class=\"sutki\">" + "Сутки" +"</td>";
+            }
+            /*Если так, значит смены нет, ячейка пустая*/
+            else {
+                table3 += "<td></td>";
+            }
+        }
+    }
+    firstMonday = new Date(firstMonday.valueOf()+sutki); //увеличиваем дату еще на 1 сутки, без этого график криво идет
+    table3 += "</tr>"; /*Закрываем строку*/
+    
+</script>
+
+<!--Первая статическая неделя-->
+<script>
+    var firstWeekStatic = "";
+
+    // Строка Николая
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td>8</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    firstWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+
+<!--Вторая статическая неделя-->
+<script>
+    var twoWeekStatic = "";
+
+    // Строка Николая
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td>8</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    twoWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+
+<!--Третья статическая неделя-->
+<script>
+    var threeWeekStatic= "";
+
+    // Строка Николая
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td>8</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
+
+    threeWeekStatic += "</table>"; /*Закрываем таблицу*/
+</script>
+<!--Условия - добавляем статические части графика к таблицам в зависимости от недели-->
+<script>
+    // Если текущая дата в рамках первой недели, то добавляем в первую таблицу firstWeekStatic, во вторую twoWeekStatic и т.д.
+    if(fullCurrentDate>startWeek1&&fullCurrentDate<finishWeek1){
+        table1 += firstWeekStatic;
+        table2 += twoWeekStatic;
+        table3 += threeWeekStatic;
+    }
+
+    // Если текущая дата в рамках второй недели, то добавляем в первую таблицу twoWeekStatic и т.д.
+    if(fullCurrentDate>startWeek2&&fullCurrentDate<finishWeek2){
+        table1 += twoWeekStatic;
+        table2 += threeWeekStatic;
+    }
+
+    // Если текущая дата в рамках третьей недели, то добавляем в первую таблицу threeWeekStatic и т.д.
+    if(fullCurrentDate>startWeek3&&fullCurrentDate<finishWeek3){
+        table1 += threeWeekStatic;
+    }
+
+</script>
+
+<!--Выводим таблицы-->
+<script>
+    // document.write("до таблицы 1"); /*Выводим таблицу*/
+    document.write(table1); /*Выводим таблицу*/
+    document.write("<br><hr>");
+    // document.write("после таблицы 1"); /*Выводим таблицу*/
+
+    document.write(table2); /*Выводим таблицу*/
+    document.write("<br><hr>");
+
+    document.write(table3); /*Выводим таблицу*/
+    // document.write("<br><hr>");
+
+    // document.write(table4); /*Выводим таблицу*/
+</script>
+</body>
+</html>
