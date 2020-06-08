@@ -272,7 +272,7 @@
     drawStringTable1(0, 7, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable1(0, 7, "Вадим", 2);
     drawStringTable1(0, 7, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
-    drawStringTable1(0, 7, "Илья", 0);
+    // drawStringTable1(0, 7, "Илья", 0);
 
     <!--Строка Лавра -->
     table1 += "<tr>";
@@ -339,7 +339,7 @@
     drawStringTable2(7, 14, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable2(7, 14, "Вадим", 2);
     drawStringTable2(7, 14, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
-    drawStringTable2(7, 14, "Илья", 0);
+    // drawStringTable2(7, 14, "Илья", 0);
 
     <!--Строка Лавра -->
     table2 += "<tr>";
@@ -407,7 +407,7 @@
     drawStringTable3(14, 21, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable3(14, 21, "Вадим", 2);
     drawStringTable3(14, 21, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
-    drawStringTable3(14, 21, "Илья", 0);
+    // drawStringTable3(14, 21, "Илья", 0);
 
 
     <!--Строка Лавра -->
@@ -442,6 +442,19 @@
 <script>
     var firstWeekStatic = "";
 
+    // Строка Ильи
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    firstWeekStatic += "<td class='night'>Ночь</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class='day'>День</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class='day'>День</td>";
+
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
     // Строка Николая
     firstWeekStatic += "<tr>";
     firstWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
@@ -462,6 +475,19 @@
 <script>
     var twoWeekStatic = "";
 
+    // Строка Ильи
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    twoWeekStatic += "<td class='night'>Ночь</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class='day'>День</td>";
+    twoWeekStatic += "<td class='night'>Ночь</td>"
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+
+    twoWeekStatic += "</tr>"; /*Закрываем строку*/
+
     // Строка Николая
     twoWeekStatic += "<tr>";
     twoWeekStatic += "<td class=\"noborder\">" + "Николай" +"</td>";
@@ -481,6 +507,19 @@
 <!--Третья статическая неделя-->
 <script>
     var threeWeekStatic= "";
+
+    // Строка Ильи
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
+    threeWeekStatic += "<td class='day'>День</td>";
+    threeWeekStatic += "<td class='night'>Ночь</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td class='night'>Ночь</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+
+    threeWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Николая
     threeWeekStatic += "<tr>";
