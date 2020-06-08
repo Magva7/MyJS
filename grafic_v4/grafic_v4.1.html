@@ -269,7 +269,7 @@
 
     // Вызываем нашу функцию, чтобы сгенерились строки
     drawStringTable1(0, 7, "Юран", 1,uranStartHoliday,uranFinishHoliday);
-    drawStringTable1(0, 7, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    // drawStringTable1(0, 7, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable1(0, 7, "Вадим", 2);
     drawStringTable1(0, 7, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
     // drawStringTable1(0, 7, "Илья", 0);
@@ -441,6 +441,19 @@
 <!--Первая статическая неделя-->
 <script>
     var firstWeekStatic = "";
+
+    // Строка Димы
+    firstWeekStatic += "<tr>";
+    firstWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    firstWeekStatic += "<td class='day'>День</td>";
+    firstWeekStatic += "<td class='night'>Ночь</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td class='night'>Ночь</td>";
+    firstWeekStatic += "<td></td>";
+    firstWeekStatic += "<td></td>";
+
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Ильи
     firstWeekStatic += "<tr>";
