@@ -50,7 +50,7 @@
 <script>
     var sutki = 24*60*60*1000; /*количество миллисекунд в сутках*/
     var fullCurrentDate = new (Date); /*Переменная, в которой полностью хранится текущая дата*/
-    // var fullCurrentDate = new Date(2020, 4, 15); /*Задаем дату вручную для теста*/
+    // var fullCurrentDate = new Date(2020, 5, 24); /*Задаем дату вручную для теста*/
     var currentDayWeek = fullCurrentDate.getDay(); /*Новая переменная - в ней текущая дата, не полная, а только день недели в цифровом формате*/
     var currentDate = fullCurrentDate.getDate(); /*Новая переменная - в ней текущая дата, не полная, а только сегодняшнее  число*/
     var firstMonday = ""; /*Создаем переменную, в которой будет храниться дата первого понедельника первой недели*/
@@ -336,7 +336,7 @@
     table2 += "</tr>"; /*Закрываем строку*/
 
     drawStringTable2(7, 14, "Юран", 1,uranStartHoliday,uranFinishHoliday);
-    drawStringTable2(7, 14, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    // drawStringTable2(7, 14, "Дима", 0,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable2(7, 14, "Вадим", 2);
     drawStringTable2(7, 14, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
     // drawStringTable2(7, 14, "Илья", 0);
@@ -404,7 +404,7 @@
     table3 += "</tr>"; /*Закрываем строку*/
 
     drawStringTable3(14, 21, "Юран", 1,uranStartHoliday,uranFinishHoliday);
-    drawStringTable3(14, 21, "Дима", -1,dimaStartHoliday,dimaFinishHoliday);
+    // drawStringTable3(14, 21, "Дима", 0,dimaStartHoliday,dimaFinishHoliday);
     drawStringTable3(14, 21, "Вадим", 2);
     drawStringTable3(14, 21, "Миша", -1,mishaStartHoliday,mishaFinishHoliday);
     // drawStringTable3(14, 21, "Илья", 0);
@@ -488,6 +488,19 @@
 <script>
     var twoWeekStatic = "";
 
+    // Строка Димы
+    twoWeekStatic += "<tr>";
+    twoWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    twoWeekStatic += "<td class='day'>День</td>";
+    twoWeekStatic += "<td class='night'>Ночь</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td class='night'>Ночь</td>";
+    twoWeekStatic += "<td></td>";
+    twoWeekStatic += "<td></td>";
+
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
+
     // Строка Ильи
     twoWeekStatic += "<tr>";
     twoWeekStatic += "<td class=\"noborder\">" + "Илья" +"</td>";
@@ -520,6 +533,19 @@
 <!--Третья статическая неделя-->
 <script>
     var threeWeekStatic= "";
+
+    // Строка Димы
+    threeWeekStatic += "<tr>";
+    threeWeekStatic += "<td class=\"noborder\">" + "Дима" +"</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td class='day'>День</td>";
+    threeWeekStatic += "<td class='night'>Ночь</td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td></td>";
+    threeWeekStatic += "<td class='night'>Ночь</td>";
+    threeWeekStatic += "<td></td>";
+
+    firstWeekStatic += "</tr>"; /*Закрываем строку*/
 
     // Строка Ильи
     threeWeekStatic += "<tr>";
