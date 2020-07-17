@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+        <title>Таймер</title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        
+    <h1 id='header'>Тутова будет таймер</h1>
+        
+<script>
+    var h1 = document.getElementById('header');
+    
+   /*Объявляем переменную currentDate, в которой будет храниться заданное количество минут*/
+    var minut = 0;
+    
+    /*Объявляем переменную, в которой будет получившееся количество секунд*/
+    var secund = minut * 60;
+    var secundStalo = secund - 1;
+    
+    var minutStalo = Math.floor(secundStalo / 60);
+    
+    function timer() {
+   
+    h1.textContent = "Осталось времени: " + minutStalo + ":" + ((secund - 1) - minutStalo * 60);
+    secund = secund - 1;    
+    setTimeout(timer, 100);
+}
+
+   timer();     
+
+</script>
+        
+    </body>
+
+
+        
+</html>

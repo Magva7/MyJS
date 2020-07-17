@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>lost connect</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+<div>Введите количество минут и нажмите "Старт"</div>
+
+<div>
+    <!--Кнопка и в ней событие по клику - start, по которому будет запускаться функция start-->
+    <input type="button" name="start_button" value="Старт" onclick="start()"/><br>
+</div>
+<!--Создаем HTML, где будет таймер-->
+<h1 id="header">Тутова будет таймер</h1>
+
+<script>
+    /*Объявляем переменную, в которой будет храниться значение таймера*/
+    var h1 = document.getElementById("header");
+
+    /*Объявляем переменную, в которой будет хранится количество секунд*/
+    var secund = 0;
+
+    /*Объявляем функцию, которая запускает таймер, функция перезапускается каждую секунду*/
+    function start() {
+
+        secund++; /*Каждую итерацию увеличиваем количество секунд на 1*/
+        h1.textContent = ("Прошло времени: 0" + Math.floor(secund / 60) + ":" + secund % 60); /*Передаем на вывод*/
+
+        /*Если больше 10 минут, то 0 вначале уже не добавляем*/
+        if(secund > 599){
+            h1.textContent = ("Прошло времени: " + Math.floor(secund / 60) + ":" + secund % 60);
+        }
+        setTimeout(start, 20); /*Частота перезапуска функции*/
+    }
+
+</script>
+
+</body>
+
+
+
+</html>
