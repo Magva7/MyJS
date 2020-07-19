@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Инвестиции</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+      div{
+        border: 1px solid black;
+        text-align: center;
+        width: 100%;
+        float: left;
+        display: inline-block;
+        margin: 5px;
+        font-size: 40px;
+      }
+
+    #wrapper {
+      text-align: center;
+      border: 2px solid black;
+    }
+
+    label {
+      color: green;
+    }
+
+    p {
+      margin: 5px;
+      clear: both;
+      font-size: 40px;
+    }
+
+    #div3 {
+      clear: both;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div id="1">
+        <label for="startMoney">Изначальный вклад, тыс</label><br>
+        <input type="range" id="startMoney" min="0" max="100" step="10" value="20" list="rangeList1" onchange="document.getElementById('rangeValue1').innerHTML = this.value; calcAndOutput()">
+        <datalist id="rangeList1">
+          <option value="10" label="10"></option>
+          <option value="15" label="15"></option>
+          <option value="20" label="20"></option>
+          <option value="25" label="25"></option>
+          <option value="30" label="30"></option>
+          <option value="35" label="35"></option>
+          <option value="40" label="40"></option>
+          <option value="45" label="45"></option>
+        </datalist>
+        <span id="rangeValue1">25</span>
+      </div>
+
+      <div id="2">
+        <label for="addMoney">Сколько тыс. в месяц откладываю</label><br>
+        <input type="range" id="addMoney" min="5" max="50" step="5" value="25" list="rangeList2" onchange="document.getElementById('rangeValue2').innerHTML = this.value; calcAndOutput()">
+        <datalist id="rangeList2">
+          <option value="10" label="10"></option>
+          <option value="15" label="15"></option>
+          <option value="20" label="20"></option>
+          <option value="25" label="25"></option>
+          <option value="30" label="30"></option>
+          <option value="35" label="35"></option>
+          <option value="40" label="40"></option>
+          <option value="45" label="45"></option>
+        </datalist>
+        <span id="rangeValue2">25</span>
+      </div>
+
+
+
+      <div id="div3">
+        <label for="srok">На сколько лет</label><br>
+        <input type="range" id="srok" min="1" max="20" step="1" value="10" list="rangeList3" onchange="document.getElementById('rangeValue3').innerHTML = this.value; calcAndOutput()">
+        <datalist id="rangeList3">
+          <option value="1" label="1"></option>
+          <option value="5" label="5"></option>
+          <option value="10" label="10"></option>
+          <option value="15" label="15"></option>
+          <option value="20" label="20"></option>
+        </datalist>
+        <span id="rangeValue3">10</span>
+      </div>
+
+      <div id=4>
+        <label for="percent">Под какой %</label><br>
+        <input type="range" id="percent" min="1" max="20" step="1" value="10" list="rangeList4" onchange="document.getElementById('rangeValue4').innerHTML = this.value; calcAndOutput()">
+        <datalist id="rangeList4">
+          <option value="1" label="1"></option>
+          <option value="5" label="5"></option>
+          <option value="10" label="10"></option>
+          <option value="15" label="15"></option>
+          <option value="20" label="20"></option>
+        </datalist>
+        <span id="rangeValue4">10</span>
+      </div>
+
+      
+  </div>
+<p>
+  Итого отложил: <span id="outputAllMoney">1000</span><br>
+  Капает в месяц с % : <span id="rentaInMounth">1000</span>
+</p>
+    
+
+
+  <script>
+function calcAndOutput(){
+    var startMoneyVar = document.getElementById("startMoney").value; //сохраняем в переменную значение первого ползунка
+    var addMoneyVar = document.getElementById("addMoney").value;
+    var srokVar = document.getElementById("srok").value;
+    var percentVar = document.getElementById("percent").value;
+    
+    var outputVar = startMoneyVar*1000;
+
+    
+
+    for (var i=0; i<srokVar*12; i++){
+        console.log(outputVar);
+        outputVar = outputVar + outputVar*(percentVar/100)/12+addMoneyVar*1000;
+        outputVar = Math.round(outputVar);
+
+    }
+    outputVar = Math.round(outputVar);
+
+    document.getElementById('outputAllMoney').innerHTML = outputVar; //выводим в элементке с id outputSpan переменную outputAllMoney
+
+    var rentaInMounthVar = outputVar*(percentVar/100)/12;
+    rentaInMounthVar = Math.round(rentaInMounthVar);
+    document.getElementById('rentaInMounth').innerHTML = rentaInMounthVar;
+   
+}
+
+
+  </script>
+  </body>
+
+</html>
