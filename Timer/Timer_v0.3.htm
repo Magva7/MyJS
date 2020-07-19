@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+        <title>Таймер</title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        
+    <h1 id='header'>Тутова будет таймер</h1>
+        
+<script>
+    var h1 = document.getElementById('header');
+    
+    /*Объявляем переменную, в которой будет получившееся количество секунд*/
+    var secund = 170;
+    var minute = "";
+    
+    function timer() {
+        secund = secund - 1;
+        minute = secund / 60;
+        
+        if (secund < 10) secund = '0' + secund; /*чтобы секунды были в виде 01, 02 и т.д.*/
+        if ((secund && minute) == 0){
+            alert ("Алярм!!!");
+        }
+        
+        h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":" + secund);;
+        setTimeout(timer, 100);
+}
+
+   timer();     
+
+</script>
+        
+    </body>
+
+
+        
+</html>

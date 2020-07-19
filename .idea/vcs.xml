@@ -4,5 +4,12 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/779703-code-and-magick-20" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/779703-keksobooking-20" vcs="Git" />
+<<<<<<< HEAD
+=======
+    <mapping directory="$PROJECT_DIR$/MyJS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/invest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/invest3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/js-htmlacademy-note" vcs="Git" />
+>>>>>>> 5f03c56d41a73e98390e6efae0355411e6aad0ea
   </component>
 </project>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+        <title>Таймер</title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+    <div>Введите количество минут и нажмите "Старт"</div>
+        
+    <div>
+        <input type="text" id="poleVvodaMinutHtml" value="0" size="4px"/><!--Текстовое поле, куда вводим минуты--> 
+        
+        <input type="button" name="start_button" value="Старт" onclick="sniff(); start();"/><br><!--Кнопка и в ней событие по клику - start, по которому будет запускаться функция start-->
+    </div>
+    <!--Создаем HTML, где будет таймер-->    
+    <h1 id="header">Тутова будет таймер</h1>
+        
+<script>
+    /*Объявляем переменную, в которой будет храниться значение таймера*/
+    var h1 = document.getElementById("header");
+    
+    /*Переменная poleVvodaMinutVar, пока в ней 0, потом через функцию будет попадать то, что ввели в поле c поле id poleVvodaMinutHtml*/
+    var poleVvodaMinutVar = 0;
+    
+    /*Объявляем переменную, в которой будет получившееся количество секунд*/
+    var secund = 0;
+    
+    /*Объявляем функцию, которая присвает переменной secund значение, введенное в поле минут и умнож на 60 */
+    function sniff(){
+        console.log("Функция sniff пошла");
+        /*Записывает в переменную poleVvodaMinutVar то, что введено в поле с id poleVvodaMinutHtml.*/
+        
+        poleVvodaMinutVar= parseInt(document.getElementById("poleVvodaMinutHtml").value);
+        /*Переводим значение в переменной в poleVvodaMinutVar в числовое*/
+        poleVvodaMinutVar = 1 * poleVvodaMinutVar;
+        
+        secund = poleVvodaMinutVar * 60;
+    }
+    /*Объявляем функцию, которая запускает таймер, функция перезапускается каждую секунду*/
+    function start() {
+
+        secund = secund - 1;
+        
+        if (secund < 10) {
+            secund = "000" + secund;
+        }
+        /*чтобы секунды были в виде 01, 02 и т.д.*/
+        if (secund == 0){
+            alert ("Алярм!!!");
+        }
+        
+        h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":" + secund % 60);;
+        setTimeout(start, 100);
+}
+
+
+</script>
+        
+    </body>
+
+
+        
+</html>

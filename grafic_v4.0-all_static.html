@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>График</title>
+<!--    Полностью статичный график на ближайшие 3 недели-->
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+
+        /*Ячейка*/
+        td {
+            border: 2px solid black;
+            /*width: 100px;*/
+            /*height: 100px;*/
+            text-align: center;
+            font-size: 34px;
+        }
+
+        .noborder {
+            border: 0;
+        }
+
+        .day_week {
+            border: 0;
+        }
+
+        .sutki{
+            background-color: salmon;
+        }
+
+        .day{
+            background-color: yellow;
+        }
+
+       .night{
+           background-color: lightblue;
+       }
+
+       .holyday {
+           color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--Первая таблица-->
+<table>
+    <!--Дни недели-->
+    <tr>
+        <td class="noborder"></td>
+        <td class="day_week">Пн</td>
+        <td class="day_week">Вт</td>
+        <td class="day_week">Ср</td>
+        <td class="day_week">Чт</td>
+        <td class="day_week">Пт</td>
+        <td class="day_week holyday">Сб</td>
+        <td class="day_week holyday">Вс</td>
+    </tr>
+
+    <!--Даты-->
+    <tr>
+        <td class="noborder"></td>
+        <td>20 апр</td>
+        <td>21 апр</td>
+        <td>22 апр</td>
+        <td>23 апр</td>
+        <td>24 апр</td>
+        <td class="holyday">25 апр</td>
+        <td class="holyday">26 апр</td>
+    </tr>
+
+    <!--Моя строка-->
+    <tr>
+        <td class="name">Юран</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--Строка Лавра-->
+    <tr>
+        <td class="name">Лавр</td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Димы-->
+    <tr>
+        <td class="name">Дима</td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Вадима-->
+    <tr>
+        <td class="name">Вадим</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+    </tr>
+
+    <!--    Строка Миши-->
+    <tr>
+        <td class="name">Миша</td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+    </tr>
+
+    <!--    Строка Ильи-->
+    <tr>
+        <td class="name">Илья</td>
+        <td>Б</td>
+        <td>Б</td>
+        <td>Б</td>
+        <td>Б</td>
+        <td>Б</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Николая-->
+    <tr>
+        <td class="name">Николай</td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td>8</td>
+        <td>8</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+
+<br>
+<br>
+
+<!--Вторая таблица-->
+<table>
+    <!--Дни недели-->
+    <tr>
+        <td class="noborder"></td>
+        <td class="day_week">Пн</td>
+        <td class="day_week">Вт</td>
+        <td class="day_week">Ср</td>
+        <td class="day_week">Чт</td>
+        <td class="day_week holyday">Пт</td>
+        <td class="day_week holyday">Сб</td>
+        <td class="day_week holyday">Вс</td>
+    </tr>
+
+    <!--Даты-->
+    <tr>
+        <td class="noborder"></td>
+        <td>27 апр</td>
+        <td>28 апр</td>
+        <td>29 апр</td>
+        <td>30 апр</td>
+        <td class="holyday">1 мая</td>
+        <td class="holyday">2 мая</td>
+        <td class="holyday">3 мая</td>
+    </tr>
+
+    <!--Моя строка-->
+    <tr>
+        <td class="name">Юран</td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+    </tr>
+
+    <!--Строка Лавра-->
+    <tr>
+        <td class="name">Лавр</td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Димы-->
+    <tr>
+        <td class="name">Дима</td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Вадима-->
+    <tr>
+        <td class="name">Вадим</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Миши-->
+    <tr>
+        <td class="name">Миша</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+    </tr>
+
+    <!--    Строка Ильи-->
+    <tr>
+        <td class="name">Илья</td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+    </tr>
+
+    <!--    Строка Николая-->
+    <tr>
+        <td class="name">Николай</td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+
+<br>
+<br>
+<!--Третья таблица-->
+<table>
+    <!--Дни недели-->
+    <tr>
+        <td class="noborder"></td>
+        <td class="day_week holyday">Пн</td>
+        <td class="day_week holyday">Вт</td>
+        <td class="day_week">Ср</td>
+        <td class="day_week">Чт</td>
+        <td class="day_week">Пт</td>
+        <td class="day_week holyday">Сб</td>
+        <td class="day_week holyday">Вс</td>
+    </tr>
+
+    <!--Даты-->
+    <tr>
+        <td class="noborder"></td>
+        <td class="holyday">4 мая</td>
+        <td class="holyday">5 мая</td>
+        <td>6 мая</td>
+        <td>7 мая</td>
+        <td>8 мая</td>
+        <td class="holyday">9 мая</td>
+        <td class="holyday">10 мая</td>
+    </tr>
+
+    <!--Моя строка-->
+    <tr>
+        <td class="name">Юран</td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+    </tr>
+
+    <!--Строка Лавра-->
+    <tr>
+        <td class="name">Лавр</td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="sutki">Сутки</td>
+    </tr>
+
+    <!--    Строка Димы-->
+    <tr>
+        <td class="name">Дима</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Вадима-->
+    <tr>
+        <td class="name">Вадим</td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Миши-->
+    <tr>
+        <td class="name">Миша</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <!--    Строка Ильи-->
+    <tr>
+        <td class="name">Илья</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+        <td class="night">Ночь</td>
+        <td></td>
+        <td></td>
+        <td class="day">День</td>
+    </tr>
+
+    <!--    Строка Николая-->
+    <tr>
+        <td class="name">Николай</td>
+        <td></td>
+        <td></td>
+        <td>8</td>
+        <td>8</td>
+        <td>8</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+</table>
+</body>
+</html>
