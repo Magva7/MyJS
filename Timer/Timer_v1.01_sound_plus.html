@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<div>Введите количество минут и нажмите "Старт" Тест раз
+<div>Введите количество минут и нажмите "Старт"
 <input type="text" id="poleVvodaMinutHtml" value="0" size="4px"/><!--Текстовое поле, куда вводим минуты-->
 </div>
 
@@ -18,7 +18,7 @@
 <h1 id="header"></h1>
 
 <!--<audio src="bonem.mp3" autoplay="autoplay"></audio>-->
-<p onclick="sound()">Кликни по этому тексту для запуска аудио</p>
+<!--<p onclick="sound()">Кликни по этому тексту для запуска аудио</p>-->
 
 <script>
     /*Объявляем переменную, в которой будет храниться значение таймера*/
@@ -28,7 +28,7 @@
     var poleVvodaMinutVar = 0;
 
     /*Объявляем переменную, в которой будет хранится количество секунд*/
-    var secund = min*60;
+    var secund = poleVvodaMinutVar*60;
 
     /*Объявляем функцию, которая присвает переменной secund значение, введенное в поле минут и умнож на 60 */
     function sniff(){
@@ -62,17 +62,17 @@
 
         /*Если меньше 10 секунд, то добавляем 0 перед минутами и секундами - это для красоты, не обязательно*/
         if (secund>0&&secund<10 ) {
-            h1.textContent = ("1Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
+            h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
         }
 
         /*Если меньше 10 минут, то*/
         if(secund>=10&&secund<600){
             if (secund%60 >= 0 && secund%60 < 10 ) {
                 /*Первые 10 секунд в минуте добавляем 0 перед секундами - не обязательно, для красоты*/
-                h1.textContent = ("2.1Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
+                h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
             } else {
                 /*Добавляем 0 перед минутами, не обязательно, для красоты*/
-                h1.textContent = ("2.2Осталось времени: 0" + Math.floor(secund / 60) + ":" + secund % 60);
+                h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":" + secund % 60);
             }
         }
 
@@ -80,10 +80,10 @@
         if(secund >=600){
             if (secund%60 >= 0 && secund%60 < 10 ) {
                 /*Первые 10 секунд в минуте добавляем 0 перед секундами - не обязательно, для красоты*/
-                h1.textContent = ("2.1Осталось времени: " + Math.floor(secund / 60) + ":0" + secund % 60);
+                h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":0" + secund % 60);
             } else {
                 /*Добавляем 0 перед минутами, не обязательно, для красоты*/
-                h1.textContent = ("3Осталось времени: " + Math.floor(secund / 60) + ":" + secund % 60);
+                h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":" + secund % 60);
             }
         }
 
