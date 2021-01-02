@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <title>Таймер</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+<div>Введите кол-во минут и нажмите "Старт"<br>
+    <!--Кнопка и в ней событие по клику - start, по которому будут запускаться функции sniff и start-->
+    <input type="button" name="start_button" value="Старт" onclick="sniff(); start();"/>
+
+    <input type="text" id="poleVvodaMinutHtml" value="0" size="4px"/><!--Текстовое поле, куда вводим минуты-->
+
+</div>
+
+<div>
+
+</div>
+<!--Создаем HTML, где будет таймер-->
+<h1 id="header"></h1>
+
+<!--<audio src="bonem.mp3" autoplay="autoplay"></audio>-->
+<!--<p onclick="sound()">Кликни по этому тексту для запуска аудио</p>-->
+
+<script>
+    /*Объявляем переменную, в которой будет храниться значение таймера*/
+    var h1 = document.getElementById("header");
+
+    /*Переменная poleVvodaMinutVar, пока в ней 0, потом через функцию будет попадать то, что ввели в поле c поле id poleVvodaMinutHtml*/
+    var poleVvodaMinutVar = 0;
+
+    /*Объявляем переменную, в которой будет хранится количество секунд*/
+    var secund = poleVvodaMinutVar*60;
+
+    /*Объявляем функцию, которая присвает переменной secund значение, введенное в поле минут и умнож на 60 */
+    function sniff(){
+        console.log("Функция sniff пошла");
+        /*Записывает в переменную poleVvodaMinutVar то, что введено в поле с id poleVvodaMinutHtml.*/
+
+        poleVvodaMinutVar= parseInt(document.getElementById("poleVvodaMinutHtml").value);
+        /*Переводим значение в переменной в poleVvodaMinutVar в числовое*/
+        poleVvodaMinutVar = 1 * poleVvodaMinutVar;
+
+        secund = poleVvodaMinutVar * 60;
+    }
+
+    /*Функция, которая запускает звуковой файл*/
+    function sound () {
+        var audio = new Audio(); // Создаём новый элемент Audio
+        audio.src = '../media/bonem.mp3'; // Указываем путь к звуку "клика"
+        audio.autoplay = true; // Автоматически запускаем
+<<<<<<< HEAD
+        // console.log(secund);
+    }
+=======
+    };
+>>>>>>> de9dc550f37f48a4ffba8f0bac473a9b9406d9a7
+
+    /*Объявляем функцию, которая запускает таймер, функция перезапускается каждую секунду*/
+    function start() {
+
+        secund--; /*Каждую итерацию уменьшаем количество секунд на 1*/
+
+        if(secund===0){
+<<<<<<< HEAD
+            sound(); /*Не работает!*/
+=======
+            sound();
+>>>>>>> de9dc550f37f48a4ffba8f0bac473a9b9406d9a7
+            // alert('Алярьм!');
+            return;
+        }
+
+        /*Если меньше 10 секунд, то добавляем 0 перед минутами и секундами - это для красоты, не обязательно*/
+        if (secund>0&&secund<10 ) {
+            h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
+        }
+
+        /*Если меньше 10 минут, то*/
+        if(secund>=10&&secund<600){
+            if (secund%60 >= 0 && secund%60 < 10 ) {
+                /*Первые 10 секунд в минуте добавляем 0 перед секундами - не обязательно, для красоты*/
+                h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":0" + secund % 60);
+            } else {
+                /*Добавляем 0 перед минутами, не обязательно, для красоты*/
+                h1.textContent = ("Осталось времени: 0" + Math.floor(secund / 60) + ":" + secund % 60);
+            }
+        }
+
+        /*Если больше 10 минут, то 0 перед минутами уже не добавляем, только перед первыми 10 секундами*/
+        if(secund >=600){
+            if (secund%60 >= 0 && secund%60 < 10 ) {
+                /*Первые 10 секунд в минуте добавляем 0 перед секундами - не обязательно, для красоты*/
+                h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":0" + secund % 60);
+            } else {
+                /*Добавляем 0 перед минутами, не обязательно, для красоты*/
+                h1.textContent = ("Осталось времени: " + Math.floor(secund / 60) + ":" + secund % 60);
+            }
+        }
+
+        /*Если больше 15 минут, то проигрываем звуковой файл*/
+
+        setTimeout(start, 1000); /*Частота перезапуска функции, мс*/
+    }
+
+
+
+</script>
+
+</body>
+
+
+
+</html>

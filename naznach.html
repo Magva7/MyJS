@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Счетчик назначений</title>
+</head>
+<style>
+    div {
+        text-align: center; /*Выравниваеем по центру*/
+    }
+
+    input, p {
+        display: inline-block;/*Выстраиваем по горизонтали*/
+    }
+</style>
+<body>
+
+<!--Дежурный Восток-->
+<div>
+    <input type="button" name="vostok_button" value="Дежурный Восток" onclick="plusVostok()"/>
+    <p id="vostok">0</p>
+    <input type="button" name="vostok_button_sbros" value="Сброс" onclick="sbrosVostok()"/>
+</div>
+
+<script>
+    var vostokCount = 0; /*Счетчик для Дежурного Восток, пока тут 0*/
+    var vostokVar = document.getElementById("vostok"); /*Записываем в переменную элемент с id vostok*/
+    var plusVostok = function(){
+        vostokCount ++; /*Увеличиваем счетчик на 1*/
+        vostokVar.textContent = (vostokCount); /*Записываем в свойство textContent значение счетчика после увеличения*/
+    };
+
+    var sbrosVostok = function(){
+        vostokCount = 0; /*Сбрасываем счетчик в 0*/
+        vostokVar.textContent = (vostokCount);/*Записываем в свойство textContent значение счетчика после обнуления*/
+    };
+</script>
+</body>
+</html>
