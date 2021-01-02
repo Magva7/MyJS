@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let a = prompt('Введите первое число');
+    // let b = prompt('Введите второе число');
+    // if (a == b) {
+    //     // console.log('Числа равны')
+    //     document.write('Числа равны')
+    // }
+    // else {
+    //     // console.log('Числа не равны')
+    //     document.write('Числа не равны')
+    // }
+    let array1 = [1, 3, 5];
+    let array2 = [1, 3, 5];
+    let message = 'Массивы не равны';
+
+    // Проверяем в цикле все элементы массивов по очереди
+
+        let count = 0; //счетчик несовпавших элементов
+        for (let i = 0; i < array1.length; i++) {
+            // Для начала сразу сравним массивы по длине, если длина разная, то массивы не равны
+            if (array1.length != array2.length) {
+                console.log('test1')
+                break;
+            }
+            //длину проверили, теперь проверяем по очереди каждый элемент, если он не равен, то сразу выходим из цикла
+            else if (array1[i] != array2[i]) {
+                console.log('test2')
+                count++;
+                break;
+            }
+    }
+
+    // Если несовпавших элементов нет,т.е. счетчик = 0
+    if (count == 0){
+        message = 'Массивы равны'
+    }
+    document.write(message);
+    // else {
+    //     document.write('Массивы равны')
+    // }
+
+
+    // Выводим для теста в консоль по очереди все элементы 1-ого массива
+    // for(let i = 0;i<array1.length;i++){
+    //     console.log(array1[i])
+    // }
+</script>
+</body>
+
+</html>

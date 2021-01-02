@@ -28,12 +28,12 @@
     var secund = min*60;
 
     /*Функция, которая запускает звуковой файл*/
-    var sound = function () {
+    function sound () {
         var audio = new Audio(); // Создаём новый элемент Audio
         audio.src = '../media/bonem.mp3'; // Указываем путь к звуку "клика"
         audio.autoplay = true; // Автоматически запускаем
-        console.log(secund);
-    };
+        // console.log(secund);
+    }
 
     /*Объявляем функцию, которая запускает таймер, функция перезапускается каждую секунду*/
     function start() {
@@ -42,7 +42,7 @@
 
         if(secund===0){
             sound(); /*Не работает!*/
-            alert('Алярьм!');
+            // alert('Алярьм!');
             return;
         }
 
