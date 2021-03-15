@@ -2,20 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <script src="js/script.js"></script>
+    <!-- Пока делается следующее - при нажатии на кнопку печается Hello, + то, что написано в поле для ввода, а если
+    в поле для ввода ввели student, то вверху к названию Lecture 53 добавляется & Lovin' it!-->
   </head>
 <body>
-  <h1 id="title">Lecture 54</h1>
+  <h1 id="title">Lecture 53</h1> <!-- Заголовок, к которому будет добавляться & Lovin' it!, если в поле ввода ввели
+  student-->
   
   <p>
-    Say hello to 
-    <input id="name" type="text">
-    <button>
-      Say it!
+    Say hello to <!--Текст на странице, который рядом с кнопкой-->
+    <input id="name" type="text"> <!-- Поле для ввода текста -->
+    <button onclick="sayHello();"> <!--Кнопка, при нажатии на которую запускается функция sayHello-->
+      Say it! <!--Это то, что у нас написано на самой кнопке-->
     </button>
   </p>
 
   
-  <div id="content"></div>
+  <div id="content"></div> <!-- Место на странице, куда будет выводиться текст-->
+
+  <script src="js/script.js"></script> <!-- Наш скрипт, писать его нужно в конце, чтобы сначала в создались элементы
+  html, к которым мы обращаться будем-->
 </body>
 </html>
