@@ -58,8 +58,12 @@ document.addEventListener("DOMContentLoaded",/**Т.е. когда событие
                     .addEventListener("mousemove", /**будем слушать событие mousemove, т.е. наведения мышки на
                          элемент**/
                         function (event) { /**и когда событие произойдет, должна запускаться функция **/
-                            console.log(event.clientX); /**в консоль будет выводиться положение мышки в этот момент**/
-                            console.log(event.clientY);
+                            if(event.shiftKey==true) {
+                                /**Если нажата клавиша shift**/
+                                console.log("x: " + event.clientX);
+                                /**в консоль выводиться положение мышки в этот момент**/
+                                console.log("y: " + event.clientY);
+                            }
                         }
                 );
 
