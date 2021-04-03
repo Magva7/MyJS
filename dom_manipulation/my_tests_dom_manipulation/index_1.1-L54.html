@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Манипуляция с DOM - лекция 54</title>
+</head>
+<body>
+
+  <input id="pole_vvoda" type="text"><!--Поле для ввода текста-->
+  <button onclick="printText();">Пыньк!</button> <!--Кнопка, которая по клику запускает функцию print_text-->
+  <div id="output"></div><!--Вывод текста-->
+
+</body>
+
+<script>
+  var printText = function () {
+      var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
+       его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
+
+      document.getElementById("output").innerHTML = varInputText; /**Ищем элемент с id="content" и записываем в содержимое
+       этого элемента, то, что у нас хранится в переменной message**/
+  }
+</script>
+</html>
