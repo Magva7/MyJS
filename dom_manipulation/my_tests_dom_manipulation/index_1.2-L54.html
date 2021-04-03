@@ -17,8 +17,11 @@
       var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
        его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
 
-      document.getElementById("output").innerHTML = varInputText; /**Ищем элемент с id="content" и записываем в содержимое
-       этого элемента, то, что у нас хранится в переменной message**/
+      var finalOutput = "<h2>Иии, раз" + varInputText + "!</h2>"; /**Создаем еще одну переменную, в нее записываем
+       теги, в которые хотим обрамить текст, который будем выводить, пишем текст и нашу переменную**/
+
+      document.getElementById("output").innerHTML = finalOutput; /**Ищем элемент с id="content" и записываем в содержимое
+       этого элемента, то, что у нас хранится в переменной finalOutput**/
   }
 </script>
 </html>
