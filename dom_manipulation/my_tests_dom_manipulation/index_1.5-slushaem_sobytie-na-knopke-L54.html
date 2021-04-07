@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Манипуляция с DOM - лекция 54</title>
+</head>
+<body>
+
+  <input id="pole_vvoda" type="text"><!--Поле для ввода текста-->
+  <button onclick="printText();">Пыньк!</button> <!--Кнопка, которая по клику запускает функцию print_text-->
+  <div id="output"></div><!--Вывод текста-->
+
+  <button onclick="myClear();">Чисто!</button>
+
+</body>
+
+<script>
+  var printText = function () { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его содержимое в переменную и
+   записываем в содержимое элемента output**/
+      var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
+       его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
+
+      var finalOutput = "<h2>Иии, раз" + varInputText + "!</h2>"; /**Создаем еще одну переменную, в нее записываем
+       теги, в которые хотим обрамить текст, который будем выводить, пишем текст и нашу переменную**/
+
+      document.getElementById("output").innerHTML = finalOutput; /**Ищем элемент с id="content" и записываем в содержимое
+       этого элемента, то, что у нас хранится в переменной finalOutput**/
+      console.log('test1=good');
+  };
+
+  var myClear = function () { /**Функция, которая ищет элемент с id output и очищает его содержимое**/
+      document.getElementById("output").innerHTML = "";
+      console.log('test2=good');
+  };
+
+  document.addEventListener('keyup', function(event){ /**Слушаем событие keyup, т.е. отпускание клавиши, т.е. как бы
+   нажатие клавиши, и если клавиша нажата, то запускается функция, внутрь этой функции передается событие event
+   с параметрами этого события (т.е. какая клавиша была нажата, ее имя, код и т.д), а внутри этой функции мы уже
+   пишем, что хотим**/
+      if(event.key=='Enter'){/**Проверяем, если нажат был Enter**/
+          myClear(); /**Запускаем функцию, которая очищает**/
+          console.log('Нажат Enter'); /**И выводим это дело для себя в консоль**/
+      }
+
+      if(event.key=='z'){/**Проверяем, если нажат был z**/
+      alert('Хто нажал z?'); /**Выводим алерт**/
+      console.log('Нажат Enter'); /**И выводим это дело для себя в консоль**/
+      }
+      // console.log('Key: ', event.key); /**Выводим в консоль, какую клавишу нажали**/
+      // console.log('keyCode: ', event.keyCode); /**Вывод кода клавиши - устаревшее**/
+  });
+</script>
+</html>
