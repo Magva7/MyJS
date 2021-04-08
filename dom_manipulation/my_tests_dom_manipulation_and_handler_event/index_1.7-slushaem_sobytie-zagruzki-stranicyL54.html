@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Прослушивание событий - лекция 54</title>
+  <script>
+
+    /**Так выглядит пустой прослушиватель события, что страница загрузилась, а уже внутрь него мы добавляем все наши
+     * прослушиватели и функции и остальное, т.е. все будет внутри него**/
+    // document.addEventListener('DOMContentLoaded',function (event) {
+    //
+    // });
+
+    document.addEventListener('DOMContentLoaded',function (event) {
+        var printText = function () { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его содержимое в переменную и
+         записываем в содержимое элемента output**/
+        this.textContent = 'Меня нажали =)'; /**Текст на кнопке после нажатия**/
+        var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
+         его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
+
+        var finalOutput = "<h2>Иии, раз" + varInputText + "!</h2>"; /**Создаем еще одну переменную, в нее записываем
+         теги, в которые хотим обрамить текст, который будем выводить, пишем текст и нашу переменную**/
+
+        document.getElementById("output").innerHTML = finalOutput; /**Ищем элемент с id="content" и записываем в содержимое
+         этого элемента, то, что у нас хранится в переменной finalOutput**/
+        console.log('test1=good');
+        };
+
+        var myClear = function () { /**Функция, которая ищет элемент с id output и очищает его содержимое**/
+        document.getElementById("output").innerHTML = "";
+            console.log('test2=good');
+        };
+
+        document.getElementById('button_print').addEventListener("click", printText); /**Ищем элемент по селектору button_print и
+         добавляем для этого элемента прослушиватель событий, т.е. если будет событие клик, то запустится функция
+         printText, т.е. теперь мы силами JS слушаем событие клик на нашей кнопке button и из HTML у кнопки можно убрать, что
+         при клике запускается функция printText**/
+
+        document.getElementById('button_clear').addEventListener("click", myClear); /**Тоже самое для второй кнопки**/
+    });
+
+
+  </script>
+</head>
+<body>
+  <p>1.5 - Прослушивание событий на странице - лекция 54<br>
+  При нажатии на кнопку ниже выводится текст, при нажатии на другую кнопку текст очищается - прослушивание
+    событий<br>
+  Теперь еще при нажатии на кнопку, меняется ее текст<br>
+  Теперь мы слушаем событие загрузки страницы, поэтому script можно перетащить в head</p>
+  <input id="pole_vvoda" type="text"><!--Поле для ввода текста-->
+  <button id="button_print">Пыньк!</button> <!--Кнопка, которая по клику запускает функцию
+  print_text-->
+  <div id="output"></div><!--Вывод текста-->
+
+  <button id="button_clear">Чисто!</button>
+
+</body>
+
+
+</html>
