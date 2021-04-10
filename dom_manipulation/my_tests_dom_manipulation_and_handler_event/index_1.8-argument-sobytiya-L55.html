@@ -12,7 +12,8 @@
     // });
 
     document.addEventListener('DOMContentLoaded',function (event) {
-        var printText = function () { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его содержимое в переменную и
+        var printText = function (event) { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его
+         содержимое в переменную и
          записываем в содержимое элемента output**/
         console.log(event); /**Выводим в консоль, чтобы посмотреть, что это у нас за событие**/
         this.textContent = 'Меня нажали =)'; /**Текст на кнопке после нажатия**/
