@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Прослушивание событий - лекция 54</title>
+  <title>Аргумент события - лекция 55</title>
   <script>
 
     /**Так выглядит пустой прослушиватель события, что страница загрузилась, а уже внутрь него мы добавляем все наши
@@ -11,11 +11,12 @@
     //
     // });
 
-    document.addEventListener('DOMContentLoaded',function (event) {
-        var printText = function (event) { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его
-         содержимое в переменную и
-         записываем в содержимое элемента output**/
-        console.log(event); /**Выводим в консоль, чтобы посмотреть, что это у нас за событие**/
+
+    document.addEventListener('DOMContentLoaded',function (event) {/**Прослушиваем событие что страница загрузилась**/
+        var printText = function (event) { /**Головная функция, в которую мы передаем событие, в скобках event вроде
+         можно и не писать, т.к. и без него работает, но пишу, т.к. так в курсе**/
+        // console.log(event); /**Выводим в консоль, чтобы посмотреть, что это у нас за событие, которое мы внутрь
+        //  функции передаем**/
         this.textContent = 'Меня нажали =)'; /**Текст на кнопке после нажатия**/
         var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
          его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
@@ -28,17 +29,19 @@
         // console.log('test1=good');
         };
 
-        var myClear = function () { /**Функция, которая ищет элемент с id output и очищает его содержимое**/
-        document.getElementById("output").innerHTML = "";
-            // console.log('test2=good');
+        var printCoord = function(event) { /**передаем в функцию событие, которое произошло, а то она координаты
+         печатать не будет**/
+            console.log(event.clientX); /**печатаем в консоль координаты**/
         };
 
         document.getElementById('button_print').addEventListener("click", printText); /**Ищем элемент по селектору button_print и
          добавляем для этого элемента прослушиватель событий, т.е. если будет событие клик, то запустится функция
-         printText, т.е. теперь мы силами JS слушаем событие клик на нашей кнопке button и из HTML у кнопки можно убрать, что
-         при клике запускается функция printText**/
+         printText**/
 
-        document.getElementById('button_clear').addEventListener("click", myClear); /**Тоже самое для второй кнопки**/
+        /**Еще один прослушиватель событий - печатает координаты при наведении на кнопку*/
+        document.getElementById('button_print').addEventListener("mousemove", printCoord);/**Ищем элемент по селектору
+         button_print и добавляем для этого элемента прослушиватель событий при наведении, т.е. если будет событие
+         наведении мыши на кнопку, то запустится функция printCoord.**/
     });
 
 
@@ -51,11 +54,10 @@
   Теперь еще при нажатии на кнопку, меняется ее текст<br>
   Теперь мы слушаем событие загрузки страницы, поэтому script можно перетащить в head</p>
   <input id="pole_vvoda" type="text"><!--Поле для ввода текста-->
-  <button id="button_print">Пыньк!</button> <!--Кнопка, которая по клику запускает функцию
-  print_text-->
-  <div id="output"></div><!--Вывод текста-->
 
-  <button id="button_clear">Чисто!</button>
+  <button id="button_print">Пыньк!</button> <!--Кнопка, которая по клику запускает функцию  print_text-->
+
+  <div id="output"></div><!--Вывод текста-->
 
 </body>
 

@@ -19,8 +19,9 @@
 </body>
 
 <script>
-  var printText = function () { /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его содержимое в переменную и
-   записываем в содержимое элемента output**/
+    /**Функция, которая ищетт элемент по id pole_vvoda, сохраняет его содержимое в переменную и
+     записывает это содержимое в содержимое элемента output**/
+  var printText = function () {
       this.textContent = 'Меня нажали =)'; /**Текст на кнопке после нажатия**/
       var varInputText = document.getElementById("pole_vvoda").value; /**Ищем элемент с id="pole_vvoda", и
        его значение (value), т.е. то, что ввели в поле ввода, записываем в переменную varInputText**/
@@ -33,8 +34,9 @@
       console.log('test1=good');
   };
 
-  var myClear = function () { /**Функция, которая ищет элемент с id output и очищает его содержимое**/
-      document.getElementById("output").innerHTML = "";
+  /**Функция, которая ищет элемент с id output и очищает его содержимое**/
+  var myClear = function () {
+      document.getElementById("output").innerHTML = ""; /**Ищем по id элемент с с id="output и очищаем его содержимое**/
       console.log('test2=good');
   };
 
