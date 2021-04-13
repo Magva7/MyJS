@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ввод и вывод текста</title>
+</head>
+<body>
+<p>
+    Итак у нас есть 3 элемента на странице - поле, куда мы вводим текст, кнопка, при нажатии на которую, <br>
+    ниже будет выводиться текст, который мы ввели и место на странице, куда мы будем текст выводить.<br>
+    Это у нас вариант без прослушивания событий, цепляем функцию прямо на кнопку
+</p>
+    <input type="text" id="vvod">
+    <button onclick="printText();">Пыньк!</button>
+    <div id="vyvod"></div> <!--Сюда выводим текст-->
+
+    <script>
+        var printText = function () {
+            var vvedenniyText = document.getElementById('vvod').value; /**Ищем элемент по id и его значение
+             кладем в переменную, т.е. сохраняем в переменную введенный текст**/
+            document.getElementById('vyvod').textContent = vvedenniyText; /**Снова ищем элемент по id и в его
+             текстовое содержимое присваиваем значение нашей переменной, в итоге это и есть вывод на экран**/
+        };
+    </script>
+</body>
+</html>
