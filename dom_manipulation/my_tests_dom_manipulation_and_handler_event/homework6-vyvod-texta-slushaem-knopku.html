@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Вывод текста по нажатию на кнопку</title>
+</head>
+<body>
+<p>
+  Итак, у нас есть 3 элемента, поле ввода, кнопка и див, куда мы будем выводить текст.<br>
+  Здесь у нас будет работать через прослушивание события нажатия на кнопку,<br> но событие прогрузки страницы мы тут не
+  слушаем.
+</p>
+
+<input id="pole_vvoda" type="text">
+
+<button>Пыньк!</button>
+
+<div id="vyvod_texta"></div>
+
+<script>
+  document.querySelector('button').addEventListener("click", function () { /**ищем элемент по селектору button и
+   навешиваем на нашу кнопку прослушивание события по клику**/
+    var text = document.getElementById('pole_vvoda').value; /**Записываем в нашу переменную - ищем элемент по id
+   pole_vvoda и его значение записываем в переменную, это наш текст, который ввели**/
+
+    document.getElementById('vyvod_texta').textContent = text; /**Ищем элемент по id vyvod_texta и записываем в его
+   текстовое содержимое то, что хранится в нашей переменной, т.е. введенный текст**/
+  })
+</script>
+</body>
+</html>
