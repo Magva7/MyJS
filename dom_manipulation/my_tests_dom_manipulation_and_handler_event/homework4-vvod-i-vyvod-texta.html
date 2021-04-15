@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ввод и вывод текста</title>
+</head>
+<body>
+<p>Итак, у нас есть поле ввода, кнопка и див, куда при нажатии на кнопку будет выводиться то, что ввели.<br>
+Сделано пока что без прослушивания события, т.е. функция вывода навешена на кнопку</p>
+
+<input id="pole_vvoda" type="text">
+<button onclick="vyvodText();">Пыньк!</button>
+<div id="vyvod_texta"></div>
+
+<script>
+  var vyvodText = function () {
+      var text = document.getElementById('pole_vvoda').value; /**Ищем по id наш элемент поля вывода и сохраняем в
+       переменную значение поля, т.е. наш введенный текст**/
+      document.getElementById('vyvod_texta').textContent = text; /**Ищем по id наш элемент div для вывода и
+       записываем в его текстовое содержимое нашу переменную, т.е. тот текст, который ввели**/
+  };
+</script>
+</body>
+</html>
