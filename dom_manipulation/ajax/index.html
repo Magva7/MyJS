@@ -6,34 +6,27 @@
         var ajaxUtils = {};
 
         // Makes an Ajax GET request to 'requestUrl'
-        ajaxUtils.sendGetRequest = function(requestUrl, responseHandler) {
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function() {
-                handleResponse(request, responseHandler);
+        ajaxUtils.sendGetRequest = function(url, responseHandler) {
+            var zapros = new XMLHttpRequest();
+            zapros.onreadystatechange = function() {
+                handleResponse(zapros, responseHandler);
             };
-            request.open("GET", requestUrl, true);
-            request.send(null); // for POST only
+            zapros.open("GET", url, true);
+            zapros.send(null); // это нужно, а то без этого печатает просто здорово, без имени
         };
 
 
-        // Only calls user provided 'responseHandler'
-        // function if response is ready
-        // and not an error
-        function handleResponse(request,
-                                responseHandler) {
-            if ((request.readyState == 4) &&
-                (request.status == 200)) {
-                responseHandler(request);
-            }
+        function handleResponse(zapros, responseHandler) {
+                responseHandler(zapros);
         }
 
         document.addEventListener("DOMContentLoaded",function (event) { /**Прослушиваем событие загрузки страницы**/
             document.querySelector("button").addEventListener("click", function () { /**Ищем по селектору нашу кнопку и
              навешиваем на нее прослушивание события по клику**/
-              ajaxUtils.sendGetRequest("data/name.txt", function (request) {/**Когда произойдет событие клик, Отсылаем
+              ajaxUtils.sendGetRequest("data/name.txt", function (zapros) {/**Когда произойдет событие клик, Отсылаем
                на сервер запрос, в первом параметре указываем, что мы хотим получить и где это лежит, в данном случае мы запрашиваем
                содержимое файла name.txt**/
-                var name = request.responseText; /**Записываем в переменную name то, что получили от сервера, т.е.
+                var name = zapros.responseText; /**Записываем в переменную name то, что получили от сервера, т.е.
                   содержимое файла name.txt**/
 
                 document.getElementById("content").textContent = "Здорово, " + name; /**Ишем по id элемент с
