@@ -3,35 +3,48 @@
   <head>
     <meta charset="utf-8">
     <script>
-        var ajaxUtils = {};
-
-        // Makes an Ajax GET request to 'requestUrl'
-        ajaxUtils.sendGetRequest = function(url, responseHandler) {
-            var zapros = new XMLHttpRequest();
-            zapros.onreadystatechange = function() {
-                handleResponse(zapros, responseHandler);
-            };
-            zapros.open("GET", url, true);
-            zapros.send(null); // это нужно, а то без этого печатает просто здорово, без имени
-        };
+      /**responseHandler - obrabotchik_otveta
+       * onreadystatechange - разные этапы связи между браузером и сервером
+       * my_object_ajax.sendGetRequest = otpravka_zaprosa**/
+        // var my_object_ajax = {}; /**Обычный пустой объект**/
 
 
-        function handleResponse(zapros, responseHandler) {
-                responseHandler(zapros);
+
+
+
+        function handleResponse(zapros, obrabotchik_otveta) {
+                obrabotchik_otveta(zapros);
         }
 
         document.addEventListener("DOMContentLoaded",function (event) { /**Прослушиваем событие загрузки страницы**/
             document.querySelector("button").addEventListener("click", function () { /**Ищем по селектору нашу кнопку и
              навешиваем на нее прослушивание события по клику**/
-              ajaxUtils.sendGetRequest("data/name.txt", function (zapros) {/**Когда произойдет событие клик, Отсылаем
+
+                    // Makes an Ajax GET request to 'requestUrl'
+            var otpravka_zaprosa = function(url, obrabotchik_otveta) {
+                      var zapros = new XMLHttpRequest();
+
+                      zapros.onreadystatechange = function() {
+                        handleResponse(zapros, obrabotchik_otveta);
+                      };
+                      zapros.open("GET", url, true); /**Это и есть наш ajax, true здесь для того, чтобы код исполнялся
+                       дальше, а не ждал результата этого кода**/
+                      zapros.send(null);/** это нужно, а то без этого печатает просто здорово, без имени, это
+                       собственно сама отправка запроса, в скобках null, т.к. у нас запрос GET, если бы был POST,
+                       тогда бы в скобках что-нибудь написали, то, что хотит запросить, но в данном случае у нас то,
+                       что мы хотим запросить написано выше в  zapros.open, url это как раз то, что мы запрашиваем**/
+                    };
+
+              otpravka_zaprosa("data/name.txt", function (zapros) {/**Когда произойдет событие клик, Отсылаем
                на сервер запрос, в первом параметре указываем, что мы хотим получить и где это лежит, в данном случае мы запрашиваем
                содержимое файла name.txt**/
-                var name = zapros.responseText; /**Записываем в переменную name то, что получили от сервера, т.е.
+                var text = zapros.responseText; /**Записываем в переменную text то, что получили от сервера, т.е.
                   содержимое файла name.txt**/
 
-                document.getElementById("content").textContent = "Здорово, " + name; /**Ишем по id элемент с
+                document.getElementById("content").textContent = "Здорово, " + text; /**Ишем по id элемент с
                   id='content' и записываем в его текстовое содержимое слово "Здорово" и  значение нашей переменной name, в ней
                   лежит то, что мы из файла name.txt получили**/
+
               });
            });
         });
