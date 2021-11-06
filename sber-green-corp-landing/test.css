@@ -1,0 +1,39 @@
+body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: sans-serif;
+  
+  }
+  
+  .squares{
+      padding: 20px;
+      display: flex;
+  }
+  
+  
+  .squares div{
+      font-size: 50px;
+      padding: 10px;
+  }
+  
+  .sq_1{
+      background-color: #2980b9;
+      margin-right: 20px;
+  }
+  .sq_2{
+      background-color: #8e44ad;
+      margin: 20px 40px;
+  }
+  .sq_3{
+      background-color: #d35400;
+      margin: 30px;
+  }
+  .sq_4{
+      background-color: #f39c12;
+      margin-top: 40px;
+      margin-right: 20px;
+      margin-bottom: 30px;
+      margin-left: 40px;
+  }
+  
+  

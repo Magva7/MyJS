@@ -1,0 +1,104 @@
+
+
+body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    color: #213053;
+    margin: 0;
+  }
+  
+  
+  .links{
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #bdc3c7;
+  }
+  
+  .links a{
+      width: 100px;
+      height: 100px;
+  }
+  
+  .links a img{
+      width: 100%;
+      height: 100%;
+  }
+  
+  header {
+    display: flex;  /* располагаем элементы по горизонтали*/
+    justify-content: space-between; /* первый элемент по левому краю, второй (это див) по правому*/
+    align-items: center; /*выравниваем по вертикали по высоте логотипа*/
+    padding: 20px; /*внутренний отступ в шапке*/
+  }
+
+  .header__logo { /*логотип*/
+    height: 30px; /*Выставить высоту будет достаточно, ширина автоматически подстроится под высоту. */
+  }
+
+  a {
+    text-decoration: none;
+    color: #213053;
+  }
+
+  header a { /*для всех тегов <a> внутри тега <header>*/
+    font-size: 15px;
+    font-weight: 600;
+    margin-right: 25px;
+  }
+
+  button {
+    font-family: 'Raleway', sans—serif;
+    font-size: 15px;
+    color: #fff;
+    background: #23a030;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer; /*делает так, чтобы при наведении на кнопку мышка была в виде указателя;*/
+    box-shadow: 0 16px 36px rgb(52 213 68 / 22%);
+    padding: 15px;
+  }
+
+  .about__image {
+    width: 500px;
+  }
+   
+  .about__sun—image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .about {
+    display: flex;
+    justify-content: space-around; /*распределяем элементы по горизонтали*/
+    align-items: center; /*выравниваем по вертикали*/
+    padding-top: 115px;
+    padding-bottom: 115px;
+    background: url('img/back.png') no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .about h1 {
+      font-size: 70px; /*размер шрифта*/
+      line-height: 76px;  /*высота строчки*/
+  }
+
+  .about p {
+    font-size: 18px; /*размер шрифта*/
+    font-weight: 400;
+    line-height: 30px;  /*высота строчки*/
+    opacity: 0.8;
+}
+
+.about button {
+    font-size: 18px; /*размер шрифта*/
+    border-radius: 20px; /*закругление*/
+    padding: 20px 25px;
+    margin-top: 20px
+}
+
+.about__info {
+    max-width: 550px;
+  }
