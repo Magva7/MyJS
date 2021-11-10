@@ -1,0 +1,49 @@
+body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  
+  .map{
+    height: 200px;
+    padding: 20px;
+    background-image: url('/static/sber/task_8/map.jpeg');
+    background-position: bottom;
+    background-size: 20% 100%;
+    margin-bottom: 100px;
+
+  }
+  
+  .mario{
+    width: 50px;
+
+  }
+  .map_1{
+    display: flex;  /*делаем головной контейнер флексовым*/
+    justify-content: space-between; /*выравниваем первый элемент в начале оси, последний элемент — в конце оси, а затем делает равное расстояние между всеми элементами*/
+    align-items: center; /*выравниваем по вертикали по центру*/
+  }
+  
+  .map_2{
+    display: flex;  /*делаем головной контейнер флексовым*/
+    justify-content: space-between; /*по горизонтали так же*/
+    align-items: stretch;  /*по вертикали по размеру контейнера*/
+  }
+  
+  .map_3{
+    display: flex;  /*делаем головной контейнер флексовым*/
+    flex-direction: column;
+    /* justify-content: space-between; по горизонтали так же */
+    align-items: center;  по вертикали по размеру контейнера
+  }
+  
+
+  /* <!-- 
+В div с классом map_1 расположите всех Марио по вертикали по центру, а по горизонтали так,
+     чтобы все свободное пространство было равномерно распределено между элементами
+
+В div с классом map_2 растяните всех Марио по вертикали, а по горизонтали так, чтобы 
+все свободное пространство было равномерно распределено между элементами
+
+В div с классом map_3 расположите всех Марио по вертикали (столбиком), а по
+ горизонтали по центру (подсказка: воспользуйтесь flex-direction:column и верным align-items:??? ) --> */
