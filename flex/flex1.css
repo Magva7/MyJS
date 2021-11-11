@@ -32,9 +32,9 @@ body {
   
   .map_3{
     display: flex;  /*делаем головной контейнер флексовым*/
-    flex-direction: column;
+    flex-direction: column; /*меняем направление оси*/
     /* justify-content: space-between; по горизонтали так же */
-    align-items: center;  по вертикали по размеру контейнера
+    align-items: center;  /*по вертикали по размеру контейнера*/
   }
   
 
