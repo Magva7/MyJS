@@ -1,0 +1,52 @@
+body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: sans-serif;
+    margin: 10px;
+}
+
+.facts {
+    display: grid;
+    /*grid-template-rows: repeat(3, 1fr); !*3 строки*!*/
+    grid-template-columns: repeat(3, 1fr); /*3 столбца*/
+    /*grid-gap: 100px;*/
+}
+
+.facts div{
+    padding: 10px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.fact_1{
+    /*grid-row: 1/2; !*1-ая строка*!*/
+    /*grid-column: 1/2; !*1-ый столбец*!*/
+}
+
+.fact_2 {
+    /*grid-row: 1/2; !*1-ая строка*!*/
+    /*grid-column: 2/3; !*2-ой столбец*!*/
+}
+
+.fact_3 {
+    /*grid-row: 1/2; !*1-ая строка*!*/
+    /*grid-column: 3/4; !*3-ий столбец*!*/
+}
+
+.fact_4 {
+    /*grid-row: 2/3; !*2-ая строка*!*/
+    grid-column: 1/4; /*с 1 по 3-ий столбец*/
+}
+
+.fact_5 {
+    /*grid-row: 3/4; !*3-я строка*!*/
+    /*grid-row: 3/4; !*3-я строка*!*/
+    grid-column: 1/2; /*1-ый столбец*/
+}
+
+.fact_6 {
+    /*grid-row: 3/4; !*3-я строка*!*/
+    grid-column: 2/4; /*2-ой и 3-ий столбец*/
+}

@@ -1,0 +1,53 @@
+body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: sans-serif;
+    margin: 10px;
+}
+
+.facts {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;;*/
+    /*grid-template-rows: 1fr 1fr 1fr;*/
+    grid-template-areas:
+            "A A A A   B B B B   C C C C"
+            "A A A A   B B B B   C C C C"
+            "D D D D   D D D D   D D D D"
+            "D D D D   D D D D   D D D D"
+            "E E E E   F F F F   F F F F"
+            "E E E E   F F F F   F F F F";
+}
+
+.facts div{
+    padding: 10px;
+    background-color: #34495e;
+    color: #ecf0f1;
+    border-radius: 5px;
+    margin: 10px;
+
+
+}
+
+.fact_1{
+    grid-area: A;
+}
+
+.fact_2 {
+    grid-area: B;
+}
+
+.fact_3 {
+    grid-area: C;
+}
+
+.fact_4{
+    grid-area: D;
+}
+
+.fact_5{
+    grid-area: E;
+}
+
+.fact_6{
+    grid-area: F;
+}
