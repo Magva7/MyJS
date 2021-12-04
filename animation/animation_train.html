@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+
+  body {
+    background-color: #6f9e80;
+    margin: 0;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+
+  @keyframes example { /*сама анимация - что делает, в данному случае передвигает картинку*/
+    0% {left: 0;}
+    100% {left: 100vw;}
+  }
+
+
+  img{
+    width: 300px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation-name: example; /*имя анимации*/
+    animation-duration: 10s; /*длительность*/
+    animation-iteration-count: 2; /*повторений*/
+    animation-timing-function: linear; /*стиль анимации*/
+  }
+
+  .pause:hover{
+    animation-play-state: paused;  /*пауза при наведении*/
+  }
+
+
+</style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<img  src="train.png" alt="" class="pause">
+</body>
+</html>

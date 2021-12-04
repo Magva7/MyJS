@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  body {
+    text-align: center;
+    background-color: #00d880;
+    padding: 20px;
+  }
+
+  .loader {
+    height: 20px;
+    background-color: #fff;
+    animation: loader 7s ease-in-out infinite;
+  }
+
+  @keyframes loader {
+    0% {
+      width: 0px;
+    }
+    70% {
+      width: 100%;
+      opacity: 1;
+    }
+    90% {
+      opacity: 0;
+      width: 100%;
+    }
+    100% {
+      opacity: 0;
+      width: 0px;
+    }
+  }
+
+</style>
+<head>
+  </head>
+<body>
+<div class="loader"></div>
+</body>
+</html>
