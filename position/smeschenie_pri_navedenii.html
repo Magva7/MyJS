@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  body {
+    text-align: center;
+    background-color: #00d880;
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .target {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    position: relative; /*относительное позиционирование*/
+    left: 0;
+    transition: left 0.2s;
+  }
+
+  .container:hover .target {
+    left: 50px; /*т.е. при наведении меняется свойство left у объекта с классом target*/
+  }
+
+
+</style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="container">
+  <div class="target"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      border: 1px solid red;
+    }
+
+    .outer {
+      border: 1px solid blue;
+      height: 400px;
+      width: 400px;
+      margin: 10px;
+      position: relative;
+      /*большой квадрат, задаем ему relative, т.е. относительное позиционирование, чтобы маленький квадрат смещался относительно большого, если не зададим, то будет смещаться относительно body*/
+    }
+
+    .inner {
+      background-color: pink;
+      height: 100px;
+      width: 100px;
+      position: absolute; /*маленький квадрат, смещается относительно большого*/
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="outer">
+  <div class="inner"></div>
+</div>
+</body>
+</html>
