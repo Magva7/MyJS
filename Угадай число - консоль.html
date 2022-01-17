@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Угадай число</title>
+<body>
+</body>
+<script>
+    var zagadChislo = 18; //загаданное число от 1 до 20
+
+    while (vvedChizlo != zagadChislo) {
+        var vvedChizlo = prompt('Введите число: ');
+        var razn = zagadChislo - vvedChizlo; //разница
+
+        if (vvedChizlo > 20 || vvedChizlo < 0) {
+            alert('Слишком большая разница');
+
+        } else if (razn > 15) {
+            alert('Очень холодно');
+
+        } else if (razn > 10) {
+            alert('Холодно');
+
+        } else if (razn >= 5) {
+            alert('Уже теплее!');
+
+        } else if (razn == 4 || razn == 3){
+            alert('Горячо');
+
+        } else if (razn == 2 || razn == 1){
+            alert('Очень горячо');
+        
+        } else if (vvedChizlo == zagadChislo){
+            alert('Угадали');
+
+        } else {
+            alert('Заглушка');
+        }
+    };
+    
+</script>
+</html>
+
