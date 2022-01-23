@@ -1,20 +1,20 @@
-var myArray = [-2, 45, 0, 11, -9];  //изначальный массив, который нужно отсортировать по возрастанию
-var i = myArray.length - 1;  // счетчик сколько раз будем менять элементы местами
+var myArray = [-2, 45, 0, 11, -9, 17, 10, 331, -100];  //изначальный массив, который нужно отсортировать по возрастанию
+var countZamen = 0;  // счетчик замен - сколько раз поменяли элементы местами
 
-while (i > 0) {
-    var j = 0; // индекс текущего элемента
+while (countZamen < (myArray.length - 1)) { // до тех пор, пока у нас счетчик замен меньше длины массива - 1
+    var currentIndex = 0; // индекс текущего элемента
     var temp; // временное хранилище для элементов при перестановке
-    while (j < myArray.length) { //// идем по всем элементам
-        if (myArray[j] > myArray[j + 1]) { // если текущий элемент больше следующего
-            temp = myArray[j]; // сохраняем текущий во времянке
-            myArray[j] = myArray[j+1]; // переставляем элементы местами -
-            myArray[j+1] = temp;
+    while (currentIndex < myArray.length) { // пробегаемся по всем элементам массива
+        if (myArray[currentIndex] > myArray[currentIndex + 1]) { // если текущий элемент больше следующего, который
+            // за ним
+            temp = myArray[currentIndex]; // сохраняем текущий во времянке
+            myArray[currentIndex] = myArray[currentIndex+1]; // переставляем элементы местами -
+            myArray[currentIndex + 1] = temp;
         } else { // если нет
-            j++; // идем к следующему элементу
+            currentIndex++; // идем к следующему элементу
         }
     }
-    i--;
+    countZamen++;
 }
 
-console.log(myArray);
-// console.log(myArray.length)
+console.log(myArray); //выводим отсортированный массив
