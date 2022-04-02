@@ -6,11 +6,13 @@
     <style>
         body{
             background-color: black; /*Цвет фона*/
-            /*#ffec62;*/
+            /*margin: 0 auto; !*центрируем элемент по горизонтали в пределах родительского блока*!*/
             color: green; /*Цвет шрифта*/
+            text-align: center;
         }
         table{
             border-collapse: collapse;
+
         }
         th,td {
             border: 1px solid green;
@@ -18,8 +20,13 @@
         }
 
         div{
-            float: left;
+            /*float: left;*/
             margin-left: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: inline-block; /*располагаем блоки в ряд по горизонтали*/
+            margin-right: -0.25em; /*убираем правый отступ между блоками*/
+
         }
 
     </style>
@@ -29,6 +36,7 @@
 <!--Для таблиц сделан border-collapse-->
 <!--Для дивов float-left, чтобы рядом стояли и margin-left, чтобы в таблицах был отступ друг от друга-->
 <!--Также задана ширина рамки и 34 размер шрифта и цвет фона-->
+<!--Отступ между таблицами задал в дивах-->
 
 <!--Банки-->
 <div>
@@ -38,56 +46,125 @@
             <th>Прил</th>
             <th>Прил.<br>инвест</th>
             <th>Пин</th>
+            <th>Онлайн<br>банк</th>
         </tr>
 
         <tr>
             <td>Тинь</td>
-            <td>пасс</td>
-            <td>пасс</td>
-            <td>пасс</td>
+            <td>5477</td>
+            <td>5477</td>
+            <td>5412</td>
+            <td>Ma-2046</td>
         </tr>
 
         <tr>
             <td>Сбер</td>
-            <td>пасс</td>
-            <td>пасс</td>
-            <td>пасс</td>
+            <td>16</td>
+            <td>275589aA<br>
+                Счет: 401X2AL</td>
+            <td>7791</td>
+            <td>Онлайн-банк</td>
         </tr>
 
         <tr>
             <td>ВТБ</td>
-            <td>пасс</td>
-            <td>пасс</td>
-            <td>пасс</td>
+            <td>1707</td>
+            <td>17135</td>
+            <td>1404</td>
+            <td>Онлайн-банк</td>
         </tr>
 
         <tr>
             <td>Альфа</td>
             <td>пасс</td>
             <td>пасс</td>
-            <td>пасс</td>
+            <td>0302</td>
+            <td>Онлайн-банк</td>
         </tr>
 
     </table>
 </div>
 
-<!--Проги-->
+<!--Проги и сайты-->
 <div>
     <table>
         <tr>
-            <th>Прога</th>
+            <th>Прога/сайт</th>
+            <th>Логин</th>
             <th>Пасс</th>
         </tr>
 
         <tr>
             <td>OneNote</td>
+            <td>magva7@gmail.com</td>
             <td>44</td>
+        </tr>
+        <tr>
+            <td>Планфикс</td>
+            <td>Magva</td>
+            <td>Rotor</td>
         </tr>
 
         <tr>
-            <td>1ss@mail.ru</td>
-            <td>пасс</td>
+            <td>Applock</td>
+            <td></td>
+            <td>17322</td>
         </tr>
+
+        <tr>
+            <td>Синергия</td>
+            <td>1t@mail.ru</td>
+            <td>007aAa</td>
+        </tr>
+
+        <tr>
+            <td>Корп. универ Сбера</td>
+            <td></td>
+            <td>Rotor2020!</td>
+        </tr>
+
+        <tr>
+            <td>Виртуальная школа</td>
+            <td></td>
+            <td>Rotor2020</td>
+        </tr>
+
+        <tr>
+            <td>Кусера</td>
+            <td>Melyashov.Y.G@</td>
+            <td>Rotor2020</td>
+        </tr>
+
+        <tr>
+            <td>интиллигент хаб</td>
+            <td></td>
+            <td>1605</td>
+        </tr>
+
+        <tr>
+            <td>Github</td>
+            <td>magva7@</td>
+            <td>16aA</td>
+        </tr>
+
+        <tr>
+            <td>https://mzdorovie.com/lk</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>WiFi-дом</td>
+            <td></td>
+            <td>Magvaycheg0626</td>
+        </tr>
+
+        <tr>
+            <td>WiFi-дача</td>
+            <td></td>
+            <td>02052202</td>
+        </tr>
+
 
 
 
@@ -121,32 +198,52 @@
             <td>44</td>
         </tr>
 
+        <tr>
+            <td>8341976@mail</td>
+            <td>Magva_2020<br>Резервная - 1ss@mail.ru</td>
+        </tr>
+
+        <tr>
+            <td>magva8@gmai</td>
+            <td>007aA<br>Резервная - 1t@mail.ru</td>
+        </tr>
+
+        <tr>
+            <td>Почта для hh<br>9504388@mail.ru</td>
+            <td>007007aA<br>Резервная - 1ss@mail.ru</td>
+        </tr>
+
+        <tr>
+            <td>Яндекс</td>
+            <td>44</td>
+        </tr>
+
     </table>
 </div>
 
 <!--Сайты-->
-<div>
-    <table>
-        <tr>
-            <th>Сайт</th>
-            <th>Логин</th>
-            <th>Пасс</th>
-        </tr>
+<!--<div>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Сайт</th>-->
+<!--            <th>Логин</th>-->
+<!--            <th>Пасс</th>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>Сайт</td>
-            <td>логин</td>
-            <td>пасс</td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>Сайт</td>-->
+<!--            <td>логин</td>-->
+<!--            <td>пасс</td>-->
+<!--        </tr>-->
 
-        <tr>
-            <td>Сайт</td>
-            <td>логин</td>
-            <td>пасс</td>
-        </tr>
+<!--        <tr>-->
+<!--            <td>Сайт</td>-->
+<!--            <td>логин</td>-->
+<!--            <td>пасс</td>-->
+<!--        </tr>-->
 
-    </table>
-</div>
+<!--    </table>-->
+<!--</div>-->
 
 </body>
 </html>
