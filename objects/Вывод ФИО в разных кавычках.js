@@ -13,5 +13,7 @@ let obj = {
     last_name: "Максимов",
     age: 32
 };
-// console.log(myObj); // тестовый вывод
-console.log('Имя: "' + obj["name"] + '" Фамилия: \'' + obj["last_name"] + '\' Возраст: ' + obj["age"]);
+
+// console.log('Имя: "' + obj["name"] + '" Фамилия: \'' + obj["last_name"] + '\' Возраст: ' + obj["age"]);
+let result = `Имя: "${obj.name}" Фамилия: '${obj.last_name}' Возраст: ${obj.age}**/`; // Еще вариант
+console.log(result)
