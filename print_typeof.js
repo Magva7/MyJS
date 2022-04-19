@@ -11,7 +11,7 @@
 let value = null;
 
 if (value === null) {  /*если у нас в переменной null*/
-	console.log("null");
+    console.log("null");
 } else {
-	console.log(typeof value);
+    console.log(typeof value);
 }
