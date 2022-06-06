@@ -1,17 +1,1 @@
-/**В программе задана переменная value. Выведите в консоль ее тип. Не забудьте, что функция typeof со значением
- *  аргумента null выдает неправильный результат. При значении null необходимо вывести "null".
-
-
- Пример значений переменных:
- value = "привет"
-
- Пример результата:
- "string"**/
-// let value = "привет";
-let value = null;
-
-if (value === null) {  /*если у нас в переменной null*/
-	console.log("null");
-} else {
-	console.log(typeof value);
-}
+console.log(typeof typeof 1);
