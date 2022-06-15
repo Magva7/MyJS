@@ -1,1 +1,2 @@
-console.log(typeof typeof 1);
+const name = "Иван";
+console.log(`Добро пожаловать, ${name}`);
